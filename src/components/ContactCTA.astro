@@ -6,7 +6,7 @@ interface Props {
 
 const {
 	title = 'Interested in embedded control architecture, automotive software/control projects, or technical leadership for physical systems?',
-	body = 'Contact me via LinkedIn or email.',
+	body = 'Use the contact page for verified contact details and CV availability.',
 } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 ---
@@ -18,43 +18,36 @@ const baseUrl = import.meta.env.BASE_URL;
 		<p>{body}</p>
 	</div>
 	<div class="button-row">
-		<a class="button primary" href="https://www.linkedin.com/in/placeholder">LinkedIn</a>
-		<a class="button" href="mailto:email@example.com">Email</a>
-		<a class="button" href={`${baseUrl}cv-placeholder.pdf`}>Download CV</a>
+		<a class="button primary" href={`${baseUrl}contact/`}>Contact me</a>
+		<a class="button" href={`${baseUrl}cases/`}>View cases</a>
 	</div>
 </section>
 
 <style>
 	.contact-cta {
 		display: grid;
-		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 28px;
-		align-items: end;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 1.25rem;
+		align-items: start;
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius);
-		background: var(--color-surface);
-		padding: 42px;
-		box-shadow: var(--shadow-line);
+		background: transparent;
+		padding: 1.25rem;
 	}
 
 	.contact-cta div:first-child {
 		display: grid;
-		gap: 12px;
-		max-width: 760px;
+		gap: 0.6rem;
+		max-width: 720px;
 	}
 
 	.contact-cta h2 {
-		font-size: 2.35rem;
+		font-size: 1.25rem;
 	}
 
-	@media (max-width: 850px) {
+	@media (min-width: 850px) {
 		.contact-cta {
-			grid-template-columns: 1fr;
-			padding: 28px;
-		}
-
-		.contact-cta h2 {
-			font-size: 1.9rem;
+			grid-template-columns: minmax(0, 1fr) auto;
 		}
 	}
 </style>

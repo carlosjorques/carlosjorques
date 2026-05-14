@@ -14,7 +14,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
 ---
 
 <header class="site-header">
-	<div class="container header-inner">
+	<div class="header-inner">
 		<a class="brand" href={withBase('/')} aria-label="Carlos Jorques home">
 			<span class="brand-mark" aria-hidden="true">CJ</span>
 			<span>
@@ -22,6 +22,10 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
 				<small>Embedded Control Systems Architect</small>
 			</span>
 		</a>
+		<p class="sidebar-bio">
+			Control intelligence for physical systems: embedded control, diagnostics, safety-related
+			development, and technical delivery.
+		</p>
 		<nav class="main-nav" aria-label="Main navigation">
 			{
 				navItems.map((item) => (
@@ -39,38 +43,46 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
 		position: sticky;
 		top: 0;
 		z-index: 4;
-		border-bottom: 1px solid var(--color-rule);
-		background: rgba(246, 243, 237, 0.96);
+		width: var(--sidebar-width);
+		height: 100vh;
+		flex-shrink: 0;
+		background: var(--color-bg);
 	}
 
 	.header-inner {
 		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 24px;
-		min-height: 76px;
+		flex-direction: column;
+		gap: 1.35rem;
+		padding: 4rem 1.5rem 1.5rem;
 	}
 
 	.brand {
 		display: inline-flex;
+		flex-direction: column;
 		align-items: center;
-		gap: 12px;
+		gap: 0.9rem;
 		color: var(--color-text);
 		text-decoration: none;
+		text-align: center;
 	}
 
 	.brand-mark {
 		display: grid;
-		width: 38px;
-		height: 38px;
+		width: 112px;
+		height: 112px;
 		place-items: center;
 		border: 1px solid var(--color-border);
-		border-radius: var(--radius);
+		border-radius: 50%;
 		background: var(--color-surface);
-		color: var(--color-accent-dark);
+		color: var(--color-accent);
 		font-family: var(--font-mono);
-		font-size: 0.78rem;
-		font-weight: 700;
+		font-size: 1.45rem;
+		font-weight: 800;
+		transition: border-color 0.2s ease;
+	}
+
+	.brand:hover .brand-mark {
+		border-color: var(--color-accent);
 	}
 
 	.brand strong,
@@ -79,49 +91,101 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
 	}
 
 	.brand strong {
-		font-size: 0.98rem;
-		line-height: 1.15;
+		font-size: 1.5rem;
+		line-height: 1.2;
+		letter-spacing: -0.02em;
 	}
 
 	.brand small {
-		margin-top: 2px;
+		margin-top: 0.25rem;
 		color: var(--color-muted);
-		font-size: 0.78rem;
-		line-height: 1.2;
+		font-size: 0.85rem;
+		line-height: 1.45;
+	}
+
+	.sidebar-bio {
+		max-width: 230px;
+		color: var(--color-text);
+		font-size: 0.9rem;
+		line-height: 1.5;
+		opacity: 0.78;
+		text-align: center;
 	}
 
 	.main-nav {
 		display: flex;
+		flex-direction: column;
 		align-items: center;
-		gap: 6px;
+		gap: 0.85rem;
+		margin-top: 0.3rem;
 	}
 
 	.main-nav a {
-		border-radius: var(--radius);
-		padding: 8px 11px;
-		color: var(--color-muted);
-		font-size: 0.93rem;
+		position: relative;
+		color: var(--color-text);
+		font-size: 0.9rem;
+		font-weight: 600;
 		text-decoration: none;
+		opacity: 0.74;
 	}
 
 	.main-nav a:hover,
 	.main-nav a[aria-current='page'] {
-		background: rgba(45, 111, 115, 0.08);
-		color: var(--color-accent-dark);
+		color: var(--color-accent);
+		opacity: 1;
 	}
 
-	@media (max-width: 780px) {
+	.main-nav a::after {
+		position: absolute;
+		bottom: -0.45rem;
+		left: 0;
+		width: 0;
+		height: 3px;
+		background: var(--color-accent);
+		content: '';
+		transition: width 0.2s ease;
+	}
+
+	.main-nav a:hover::after,
+	.main-nav a[aria-current='page']::after {
+		width: 100%;
+	}
+
+	@media (max-width: 1024px) {
+		.site-header {
+			position: relative;
+			width: 100%;
+			height: auto;
+		}
+
 		.header-inner {
-			align-items: flex-start;
-			flex-direction: column;
-			gap: 12px;
-			padding: 14px 0;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 0.9rem 1rem;
+			padding: 1rem 1.5rem;
+		}
+
+		.brand {
+			flex-direction: row;
+			text-align: left;
+		}
+
+		.brand-mark {
+			width: 72px;
+			height: 72px;
+			font-size: 1rem;
+		}
+
+		.sidebar-bio {
+			display: none;
 		}
 
 		.main-nav {
+			flex-direction: row;
 			width: 100%;
 			overflow-x: auto;
-			padding-bottom: 2px;
+			padding-bottom: 0.25rem;
 		}
 
 		.main-nav a {

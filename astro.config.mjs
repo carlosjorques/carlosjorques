@@ -5,4 +5,7 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: 'https://carlosjorques.github.io',
   base: '/carlosjorques',
+  devToolbar: {
+    enabled: false,
+  },
 });

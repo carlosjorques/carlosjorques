@@ -14,29 +14,24 @@ const { title, description } = Astro.props;
 
 <style>
 	.expertise-card {
-		min-height: 220px;
-		border: 1px solid var(--color-border);
-		border-radius: var(--radius);
-		background: rgba(255, 253, 250, 0.7);
-		padding: 22px;
-		box-shadow: var(--shadow-line);
+		min-height: 0;
+		border-top: 1px solid var(--color-border);
+		padding: 1rem 0 0;
 	}
 
 	.expertise-card h3 {
 		display: grid;
-		grid-template-columns: 24px minmax(0, 1fr);
-		gap: 10px;
+		grid-template-columns: 18px minmax(0, 1fr);
+		gap: 0.6rem;
 		align-items: start;
-		margin-bottom: 18px;
+		margin-bottom: 0.55rem;
 	}
 
 	.expertise-card h3::before {
-		width: 24px;
-		height: 24px;
-		border: 1px solid var(--color-border-strong);
-		background:
-			linear-gradient(90deg, transparent 10px, var(--color-border-strong) 10px, var(--color-border-strong) 11px, transparent 11px),
-			linear-gradient(180deg, transparent 10px, var(--color-border-strong) 10px, var(--color-border-strong) 11px, transparent 11px);
+		width: 18px;
+		height: 18px;
+		border: 1px solid var(--color-border);
+		background: var(--color-surface);
 		content: '';
 	}
 

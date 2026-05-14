@@ -16,9 +16,6 @@ const baseUrl = import.meta.env.BASE_URL;
 			<a href={`${baseUrl}research/#publications`}>Publications</a>
 			<a href={`${baseUrl}cases/`}>Cases</a>
 			<a href={`${baseUrl}writing/`}>Writing</a>
-			<a href={`${baseUrl}cv-placeholder.pdf`}>CV</a>
-			<a href="https://www.linkedin.com/in/placeholder">LinkedIn</a>
-			<a href="https://github.com/placeholder">GitHub</a>
 			<a href={`${baseUrl}contact/`}>Contact</a>
 		</nav>
 	</div>
@@ -27,37 +24,40 @@ const baseUrl = import.meta.env.BASE_URL;
 <style>
 	.site-footer {
 		border-top: 1px solid var(--color-border);
-		padding: 36px 0;
-		background: var(--color-bg-soft);
+		padding: 1.5rem 2rem;
+		background: transparent;
 	}
 
 	.footer-grid {
 		display: grid;
-		grid-template-columns: 1fr auto;
-		gap: 28px;
+		grid-template-columns: 1fr;
+		gap: 1rem;
 		align-items: start;
 	}
 
 	.footer-text {
-		max-width: 660px;
-		margin-top: 10px;
+		max-width: 720px;
+		margin-top: 0.45rem;
+		font-size: 0.85rem;
 	}
 
 	nav {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 10px 18px;
-		justify-content: flex-end;
+		gap: 0.75rem 1rem;
+		justify-content: flex-start;
 	}
 
 	nav a {
-		color: var(--color-muted);
-		font-size: 0.95rem;
+		color: var(--color-text);
+		font-size: 0.85rem;
 		text-decoration: none;
+		opacity: 0.74;
 	}
 
 	nav a:hover {
-		color: var(--color-accent-dark);
+		color: var(--color-accent);
+		opacity: 1;
 	}
 
 	@media (max-width: 720px) {
