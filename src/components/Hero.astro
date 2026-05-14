@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { title, phrase, body, credibility } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <section class="hero section">
@@ -17,9 +18,9 @@ const { title, phrase, body, credibility } = Astro.props;
 			<p class="lead">{body}</p>
 			<p class="credibility">{credibility}</p>
 			<div class="button-row" aria-label="Primary actions">
-				<a class="button primary" href="/contact/">Contact me</a>
-				<a class="button" href="/cases/">View cases</a>
-				<a class="button" href="/cv-placeholder.pdf">Download CV</a>
+				<a class="button primary" href={`${baseUrl}contact/`}>Contact me</a>
+				<a class="button" href={`${baseUrl}cases/`}>View cases</a>
+				<a class="button" href={`${baseUrl}cv-placeholder.pdf`}>Download CV</a>
 			</div>
 		</div>
 		<aside class="hero-panel" aria-label="Professional positioning">

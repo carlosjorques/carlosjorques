@@ -14,12 +14,14 @@ interface Props {
 }
 
 const { slug, data } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const caseUrl = `${baseUrl}cases/${slug}/`;
 ---
 
 <article class="case-card">
 	<div>
 		<p class="eyebrow">{data.domain}</p>
-		<h3><a href={`/cases/${slug}/`}>{data.title}</a></h3>
+		<h3><a href={caseUrl}>{data.title}</a></h3>
 		<p>{data.summary}</p>
 	</div>
 	<div class="meta">

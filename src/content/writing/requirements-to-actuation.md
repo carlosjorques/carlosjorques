@@ -1,5 +1,5 @@
 ---
-title: From Requirements to Actuation: How Control Systems Become Production Software
+title: "From Requirements to Actuation: How Control Systems Become Production Software"
 description: A draft article describing the path from requirements and system behavior to embedded control logic that drives physical action.
 publishDate: 2026-05-14
 category: Safety-Critical Automotive Development
