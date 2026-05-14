@@ -51,7 +51,7 @@ const baseUrl = import.meta.env.BASE_URL;
 	<Hero
 		title="Embedded Control Systems Architect"
 		phrase="Control Intelligence for Physical Systems"
-		body="I lead the design of production-ready embedded control systems for vehicles and smart machines — connecting sensing, signal processing, embedded software, control algorithms, diagnostics, actuation, safety, and delivery."
+		body="I design and lead production-ready embedded control systems for vehicles and smart machines — connecting sensing, signal processing, embedded software, control algorithms, diagnostics, actuation, safety, and delivery."
 		credibility="PhD-trained electrical engineer with automotive OEM and Tier 1 experience across embedded control, diagnostics, safety-related development, and cross-functional delivery."
 	/>
 
@@ -59,7 +59,7 @@ const baseUrl = import.meta.env.BASE_URL;
 		<div class="container">
 			<SectionHeading
 				eyebrow="Expertise snapshot"
-				title="The technical scope hiring teams usually need covered"
+				title="The technical scope hiring teams need covered"
 				description="A focused profile for roles that need architecture judgment, embedded control implementation awareness, diagnostics, standards literacy, and cross-functional delivery."
 			/>
 			<div class="grid four">
@@ -71,24 +71,11 @@ const baseUrl = import.meta.env.BASE_URL;
 	<section class="section">
 		<div class="container">
 			<SectionHeading
-				eyebrow="Machine nervous system"
+				eyebrow="The control chain I work across"
 				title="Sensors → Signals → Software → Control → Actuation → Behavior"
-				description="A compact model for the chain where physical systems become observable, controllable, diagnosable, and reliable."
+				description="I work across this chain to help physical systems sense, decide, and act reliably."
 			/>
 			<SystemModel />
-		</div>
-	</section>
-
-	<section class="section">
-		<div class="container">
-			<SectionHeading
-				eyebrow="Selected experience cases"
-				title="Representative work, generalized for confidentiality"
-				description="These cases show the type of architecture, controls, diagnostics, and delivery leadership I bring without naming OEMs, suppliers, products, internal requirements, or implementation details."
-			/>
-			<div class="grid three">
-				{cases.map((entry) => <CaseCard slug={toSlug(entry.id)} data={entry.data} />)}
-			</div>
 		</div>
 	</section>
 
@@ -113,6 +100,19 @@ const baseUrl = import.meta.env.BASE_URL;
 			</div>
 			<p>{researchSummary}</p>
 			<a class="button" href={`${baseUrl}research/`}>View research background</a>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<SectionHeading
+				eyebrow="Selected experience cases"
+				title="Representative work, generalized for confidentiality"
+				description="These cases show the type of architecture, controls, diagnostics, and delivery leadership I bring without naming OEMs, suppliers, products, internal requirements, or implementation details."
+			/>
+			<div class="grid three">
+				{cases.map((entry) => <CaseCard slug={toSlug(entry.id)} data={entry.data} />)}
+			</div>
 		</div>
 	</section>
 

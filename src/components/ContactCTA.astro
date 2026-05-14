@@ -5,8 +5,8 @@ interface Props {
 }
 
 const {
-	title = 'Discuss embedded control systems architecture',
-	body = 'For technical leadership roles, embedded control systems architecture, automotive software/control projects, or discussions around control intelligence for physical systems, feel free to contact me.',
+	title = 'Interested in embedded control architecture, automotive software/control projects, or technical leadership for physical systems?',
+	body = 'Contact me via LinkedIn or email.',
 } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 ---
@@ -18,8 +18,8 @@ const baseUrl = import.meta.env.BASE_URL;
 		<p>{body}</p>
 	</div>
 	<div class="button-row">
-		<a class="button primary" href={`${baseUrl}contact/`}>Contact me</a>
-		<a class="button" href="https://www.linkedin.com/in/placeholder">LinkedIn</a>
+		<a class="button primary" href="https://www.linkedin.com/in/placeholder">LinkedIn</a>
+		<a class="button" href="mailto:email@example.com">Email</a>
 		<a class="button" href={`${baseUrl}cv-placeholder.pdf`}>Download CV</a>
 	</div>
 </section>

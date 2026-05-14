@@ -16,6 +16,15 @@ interface Props {
 const { slug, data } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 const caseUrl = `${baseUrl}cases/${slug}/`;
+const demonstratesByTitle: Record<string, string> = {
+	'Embedded Control System Architecture':
+		'Ability to define the control system boundary, interfaces, and production architecture.',
+	'Control Algorithms and Diagnostics':
+		'Ability to connect control logic, diagnostics, and physical system behavior.',
+	'Cross-Functional Technical Delivery':
+		'Ability to align teams, requirements, suppliers, and delivery constraints.',
+};
+const demonstrates = demonstratesByTitle[data.title];
 ---
 
 <article class="case-card">
@@ -23,6 +32,11 @@ const caseUrl = `${baseUrl}cases/${slug}/`;
 		<p class="eyebrow">{data.domain}</p>
 		<h3><a href={caseUrl}>{data.title}</a></h3>
 		<p>{data.summary}</p>
+		{demonstrates && (
+			<p class="demonstrates">
+				<strong>Demonstrates:</strong> {demonstrates}
+			</p>
+		)}
 	</div>
 	<div class="meta">
 		<span>{data.role}</span>
@@ -76,6 +90,17 @@ const caseUrl = `${baseUrl}cases/${slug}/`;
 
 	.case-card p:not(.eyebrow) {
 		line-height: 1.65;
+	}
+
+	.demonstrates {
+		margin-top: 16px;
+		color: #3f474a;
+		font-size: 0.95rem;
+	}
+
+	.demonstrates strong {
+		color: var(--color-text);
+		font-weight: 700;
 	}
 
 	.meta {
