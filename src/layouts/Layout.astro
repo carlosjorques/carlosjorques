@@ -14,7 +14,12 @@ const {
 } = Astro.props;
 
 const siteTitle = title.includes('Carlos Jorques') ? title : `${title} | Carlos Jorques`;
-const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const baseUrl = import.meta.env.BASE_URL;
+const basePath = baseUrl.replace(/\/$/, '');
+const pathname = Astro.url.pathname.startsWith(basePath)
+	? Astro.url.pathname
+	: `${basePath}${Astro.url.pathname}`;
+const canonical = new URL(pathname, Astro.site ?? Astro.url.origin);
 ---
 
 <!doctype html>
@@ -22,8 +27,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
+		<link rel="icon" href={`${baseUrl}favicon.ico`} />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="canonical" href={canonical} />
 		<title>{siteTitle}</title>

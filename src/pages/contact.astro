@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <Layout
@@ -25,7 +27,7 @@ import SectionHeading from '../components/SectionHeading.astro';
 					<span>LinkedIn</span>
 					<strong>linkedin.com/in/placeholder</strong>
 				</a>
-				<a href="/cv-placeholder.pdf">
+				<a href={`${baseUrl}cv-placeholder.pdf`}>
 					<span>CV</span>
 					<strong>Download CV placeholder</strong>
 				</a>

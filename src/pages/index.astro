@@ -37,6 +37,7 @@ const cases = (await getCollection('cases'))
 	.filter((entry) => entry.data.featured)
 	.sort((a, b) => a.data.order - b.data.order);
 const posts = (await getCollection('writing')).filter((entry) => entry.data.featured);
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <Layout
@@ -112,7 +113,7 @@ const posts = (await getCollection('writing')).filter((entry) => entry.data.feat
 				safety, software integration, diagnostics, standards, suppliers, and delivery constraints
 				matter.
 			</p>
-			<a class="button" href="/research/">View research background</a>
+			<a class="button" href={`${baseUrl}research/`}>View research background</a>
 		</div>
 	</section>
 

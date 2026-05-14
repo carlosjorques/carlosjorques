@@ -1,46 +1,38 @@
-# Astro Starter Kit: Basics
+# Carlos Jorques Portfolio
+
+Astro static site for Carlos Jorques, positioned as an Embedded Control Systems Architect.
+
+## Local Development
+
+Install dependencies and start the local development server:
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The dev server runs at `http://localhost:4321`.
 
-## 🚀 Project Structure
+## Build
 
-Inside of your Astro project, you'll see the following folders and files:
+Build the production site:
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```sh
+npm run build
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Astro writes the static output to `dist/`.
 
-## 🧞 Commands
+## GitHub Pages Deployment
 
-All commands are run from the root of the project, from a terminal:
+Deployment is configured through `.github/workflows/static.yml` using the official Astro GitHub Action and GitHub Pages.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Current deployment assumptions:
 
-## 👀 Want to learn more?
+- Repository: `carlosjorques/carlosjorques`
+- Pages URL: `https://carlosjorques.github.io/carlosjorques/`
+- Source branch: `master`
+- Output directory: `dist/`
+- Node.js: 22
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+In the GitHub repository settings, set Pages source to **GitHub Actions**. Each push to `master` will build and deploy the site.
