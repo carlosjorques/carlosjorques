@@ -1,7 +1,7 @@
 ---
 title: Control Algorithms and Diagnostics
 summary: Development of control and diagnostic logic for reliable physical system behavior under real-time and production constraints.
-role: Control and diagnostic strategy development
+role: Control and diagnostic strategy architecture
 capabilities:
   - Control algorithms
   - Diagnostic strategy
@@ -23,11 +23,11 @@ Reliable physical systems require control logic that regulates behavior and diag
 
 ## Technical challenge
 
-The technical challenge was to translate control intent and diagnostic needs into logic that could operate under real-time constraints, integrate with embedded software, and remain understandable to engineering stakeholders.
+The technical challenge was to translate control intent and diagnostic needs into logic that could operate under real-time constraints, integrate with embedded software, and remain understandable to engineering stakeholders responsible for implementation, validation, and delivery.
 
 ## My role
 
-I contributed to control and diagnostic reasoning, signal interpretation, logic structuring, implementation constraints, and cross-functional review of expected system behavior.
+My role was to structure control and diagnostic reasoning, clarify signal interpretation, account for implementation constraints, and align cross-functional understanding of expected system behavior.
 
 ## System scope
 
@@ -39,11 +39,11 @@ The work aligned with production automotive expectations, safety-related develop
 
 ## Outcome
 
-The result was control and diagnostic logic suitable for integration into a broader embedded control system, with attention to reliability, maintainability, and production constraints.
+The result was control and diagnostic logic framed for integration into a broader embedded control system, with attention to reliability, maintainability, validation, and production constraints.
 
 ## What this demonstrates
 
-This demonstrates the ability to connect modeling and control thinking with embedded implementation, diagnostic design, and reliable machine behavior.
+This demonstrates the ability to connect modeling and control thinking with embedded implementation, diagnostic design, validation concerns, and reliable machine behavior.
 
 ## Confidentiality note
 

@@ -36,3 +36,14 @@ Current deployment assumptions:
 - Node.js: 22
 
 In the GitHub repository settings, set Pages source to **GitHub Actions**. Each push to `master` will build and deploy the site.
+
+## Project Guidance
+
+This repository also contains project-local instructions and skills for evolving the site:
+
+- Root project instructions for Codex in `AGENTS.md`
+- A concise project summary in `PROJECT_BRIEF.md`
+- Agent playbooks for role-specific work
+- Custom skills under `.agents/skills/`
+
+Use these materials when refining content, architecture, deployment, accessibility, SEO, and recruiter-facing positioning.

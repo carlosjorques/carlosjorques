@@ -1,7 +1,7 @@
 ---
 title: Cross-Functional Technical Delivery
 summary: Technical leadership across software, controls, systems, suppliers, and stakeholders in automotive embedded control development.
-role: Technical leadership and delivery alignment
+role: Technical leadership across controls, software, systems, and suppliers
 capabilities:
   - Stakeholder alignment
   - Supplier collaboration
@@ -23,11 +23,11 @@ Embedded control projects depend on clear technical direction across teams that 
 
 ## Technical challenge
 
-The challenge was to align technical decisions, interfaces, requirements, constraints, and delivery expectations across multiple stakeholders while keeping the control system behavior coherent.
+The challenge was to align technical decisions, interfaces, requirements, constraints, and delivery expectations across multiple stakeholders while keeping the intended control system behavior coherent.
 
 ## My role
 
-I supported technical alignment, clarified system expectations, structured discussions around tradeoffs, connected software and controls perspectives, and helped move implementation topics toward delivery.
+My role was to drive technical alignment, clarify system expectations, structure discussions around tradeoffs, connect software and controls perspectives, and move implementation topics toward delivery.
 
 ## System scope
 
@@ -39,11 +39,11 @@ The work took place in automotive embedded development contexts influenced by re
 
 ## Outcome
 
-The result was stronger technical alignment around embedded control delivery, helping teams make progress across architecture, implementation, verification, and stakeholder communication.
+The result was stronger technical alignment around embedded control delivery, helping teams make progress across architecture, implementation, verification, supplier communication, and stakeholder decisions.
 
 ## What this demonstrates
 
-This demonstrates technical leadership for embedded control systems where successful delivery depends on systems thinking, software awareness, control understanding, process discipline, and stakeholder alignment.
+This demonstrates technical leadership for embedded control systems where successful delivery depends on systems thinking, software awareness, control understanding, process discipline, supplier coordination, and stakeholder alignment.
 
 ## Confidentiality note
 

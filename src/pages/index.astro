@@ -37,6 +37,10 @@ const cases = (await getCollection('cases'))
 	.filter((entry) => entry.data.featured)
 	.sort((a, b) => a.data.order - b.data.order);
 const posts = (await getCollection('writing')).filter((entry) => entry.data.featured);
+const researchItems = (await getCollection('research')).filter((entry) => entry.data.featured);
+const researchSummary =
+	researchItems.find((entry) => entry.data.type === 'Research themes')?.data.summary ??
+	'My research background supports rigorous thinking in modeling, analysis, and control, applied to production embedded systems where architecture, safety, software integration, diagnostics, standards, suppliers, and delivery constraints matter.';
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
@@ -55,8 +59,8 @@ const baseUrl = import.meta.env.BASE_URL;
 		<div class="container">
 			<SectionHeading
 				eyebrow="Expertise snapshot"
-				title="From architecture to reliable machine behavior"
-				description="A focused profile across the technical layers that make embedded control systems work in production contexts."
+				title="The technical scope hiring teams usually need covered"
+				description="A focused profile for roles that need architecture judgment, embedded control implementation awareness, diagnostics, standards literacy, and cross-functional delivery."
 			/>
 			<div class="grid four">
 				{expertise.map((item) => <ExpertiseCard title={item.title} description={item.description} />)}
@@ -79,8 +83,8 @@ const baseUrl = import.meta.env.BASE_URL;
 		<div class="container">
 			<SectionHeading
 				eyebrow="Selected experience cases"
-				title="Public-safe examples of embedded control leadership"
-				description="Generalized case studies showing the kind of architecture, controls, diagnostics, and delivery work I support."
+				title="Representative work, generalized for confidentiality"
+				description="These cases show the type of architecture, controls, diagnostics, and delivery leadership I bring without naming OEMs, suppliers, products, internal requirements, or implementation details."
 			/>
 			<div class="grid three">
 				{cases.map((entry) => <CaseCard slug={toSlug(entry.id)} data={entry.data} />)}
@@ -91,9 +95,9 @@ const baseUrl = import.meta.env.BASE_URL;
 	<section class="section">
 		<div class="container">
 			<SectionHeading
-				eyebrow="Featured writing"
-				title="Notes on control intelligence and production systems"
-				description="Draft article topics for framing embedded control architecture, diagnostics, and technical leadership in physical systems."
+				eyebrow="Writing roadmap"
+				title="Topics I use to explain control systems work clearly"
+				description="Planned writing topics that frame embedded control architecture, diagnostics, and technical leadership for physical systems."
 			/>
 			<div class="grid three">
 				{posts.map((entry) => <PostCard slug={toSlug(entry.id)} data={entry.data} />)}
@@ -107,12 +111,7 @@ const baseUrl = import.meta.env.BASE_URL;
 				<p class="eyebrow">Research foundation</p>
 				<h2>Modeling and control depth, applied to production embedded systems</h2>
 			</div>
-			<p>
-				My research background supports rigorous thinking in modeling, analysis, and control. The
-				professional focus of this site is industrial technical leadership where architecture,
-				safety, software integration, diagnostics, standards, suppliers, and delivery constraints
-				matter.
-			</p>
+			<p>{researchSummary}</p>
 			<a class="button" href={`${baseUrl}research/`}>View research background</a>
 		</div>
 	</section>
