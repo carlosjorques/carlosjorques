@@ -16,13 +16,28 @@ const { title, description } = Astro.props;
 	.expertise-card {
 		min-height: 220px;
 		border: 1px solid var(--color-border);
-		border-radius: 8px;
-		background: rgba(255, 255, 255, 0.58);
+		border-radius: var(--radius);
+		background: rgba(255, 253, 250, 0.7);
 		padding: 22px;
+		box-shadow: var(--shadow-line);
 	}
 
 	.expertise-card h3 {
+		display: grid;
+		grid-template-columns: 24px minmax(0, 1fr);
+		gap: 10px;
+		align-items: start;
 		margin-bottom: 18px;
+	}
+
+	.expertise-card h3::before {
+		width: 24px;
+		height: 24px;
+		border: 1px solid var(--color-border-strong);
+		background:
+			linear-gradient(90deg, transparent 10px, var(--color-border-strong) 10px, var(--color-border-strong) 11px, transparent 11px),
+			linear-gradient(180deg, transparent 10px, var(--color-border-strong) 10px, var(--color-border-strong) 11px, transparent 11px);
+		content: '';
 	}
 
 	.expertise-card p {

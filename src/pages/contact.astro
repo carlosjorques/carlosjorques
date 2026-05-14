@@ -40,7 +40,7 @@ const baseUrl = import.meta.env.BASE_URL;
 	.contact-grid {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr) 420px;
-		gap: clamp(32px, 6vw, 78px);
+		gap: 72px;
 		align-items: start;
 	}
 
@@ -49,14 +49,15 @@ const baseUrl = import.meta.env.BASE_URL;
 		gap: 1px;
 		overflow: hidden;
 		border: 1px solid var(--color-border);
-		border-radius: 8px;
+		border-radius: var(--radius);
 		background: var(--color-border);
+		box-shadow: var(--shadow-line);
 	}
 
 	.contact-panel a {
 		display: grid;
 		gap: 6px;
-		background: rgba(255, 255, 255, 0.66);
+		background: rgba(255, 253, 250, 0.78);
 		padding: 22px;
 		text-decoration: none;
 	}
@@ -80,6 +81,7 @@ const baseUrl = import.meta.env.BASE_URL;
 	@media (max-width: 850px) {
 		.contact-grid {
 			grid-template-columns: 1fr;
+			gap: 32px;
 		}
 	}
 </style>

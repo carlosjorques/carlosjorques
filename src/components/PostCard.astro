@@ -40,9 +40,18 @@ const label = data.draft ? 'Planned article' : data.publishDate.toLocaleDateStri
 		display: grid;
 		gap: 14px;
 		border: 1px solid var(--color-border);
-		border-radius: 8px;
-		background: rgba(255, 255, 255, 0.58);
+		border-radius: var(--radius);
+		background: rgba(255, 253, 250, 0.7);
 		padding: 22px;
+		box-shadow: var(--shadow-line);
+		transition:
+			background-color 160ms ease,
+			border-color 160ms ease;
+	}
+
+	.post-card:hover {
+		border-color: var(--color-border-strong);
+		background: var(--color-surface);
 	}
 
 	.post-card h3 {

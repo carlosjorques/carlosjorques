@@ -41,9 +41,20 @@ const caseUrl = `${baseUrl}cases/${slug}/`;
 		gap: 28px;
 		min-height: 300px;
 		border: 1px solid var(--color-border);
-		border-radius: 8px;
-		background: rgba(255, 255, 255, 0.58);
+		border-radius: var(--radius);
+		background: rgba(255, 253, 250, 0.74);
 		padding: 24px;
+		box-shadow: var(--shadow-line);
+		transition:
+			background-color 160ms ease,
+			border-color 160ms ease,
+			transform 160ms ease;
+	}
+
+	.case-card:hover {
+		border-color: var(--color-border-strong);
+		background: var(--color-surface);
+		transform: translateY(-2px);
 	}
 
 	.case-card h3 {
@@ -54,6 +65,13 @@ const caseUrl = `${baseUrl}cases/${slug}/`;
 
 	.case-card h3 a {
 		text-decoration: none;
+	}
+
+	.case-card h3 a::after {
+		color: var(--color-accent);
+		content: ' /';
+		font-family: var(--font-mono);
+		font-size: 0.85em;
 	}
 
 	.case-card p:not(.eyebrow) {
@@ -74,6 +92,6 @@ const caseUrl = `${baseUrl}cases/${slug}/`;
 
 	:global(.tag.muted) {
 		color: #6d777a;
-		background: rgba(231, 235, 236, 0.54);
+		background: rgba(229, 236, 236, 0.62);
 	}
 </style>
