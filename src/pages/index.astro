@@ -13,22 +13,22 @@ const expertise = [
 	{
 		title: 'System Architecture',
 		description:
-			'Defining sensing, software interfaces, control logic, diagnostics, actuation, and system behavior.',
+			'Defining real-time control system boundaries, software interfaces, diagnostics, actuation logic, reliability expectations, and production architecture.',
 	},
 	{
 		title: 'Embedded Control Software',
 		description:
-			'Translating control intent into real-time production software structures, integration logic, and maintainable embedded implementation.',
+			'Translating control intent into maintainable embedded software structures that support integration, delivery, optimization, and robust industrialization.',
 	},
 	{
 		title: 'Control & Diagnostics',
 		description:
-			'Designing algorithms and diagnostic strategies that help physical systems regulate, protect, detect faults, and behave reliably.',
+			'Designing control and diagnostic logic that helps physical systems regulate behavior, detect faults, manage risk, and operate reliably in production.',
 	},
 	{
 		title: 'Technical Leadership',
 		description:
-			'Aligning teams, suppliers, stakeholders, requirements, standards, and delivery constraints around embedded control projects.',
+			'Aligning teams, suppliers, stakeholders, requirements, standards, compliance expectations, and delivery constraints around embedded control projects.',
 	},
 ];
 
@@ -48,89 +48,200 @@ const baseUrl = import.meta.env.BASE_URL;
 	title="Embedded Control Systems Architect"
 	description="Carlos Jorques leads production-ready embedded control systems for vehicles and smart machines, connecting sensing, software, diagnostics, actuation, safety, and delivery."
 >
-	<Hero
-		title="Embedded Control Systems Architect"
-		phrase="Control Intelligence for Physical Systems"
-		body="I design and lead production-ready embedded control systems for vehicles and smart machines - connecting sensing, signal processing, embedded software, control algorithms, diagnostics, actuation, safety, and delivery."
-		credibility="PhD-trained electrical engineer with automotive OEM and Tier 1 experience across embedded control, diagnostics, safety-related development, and cross-functional delivery."
-	/>
+	<div class="welcome-page">
+		<div class="welcome-cover" aria-hidden="true"></div>
 
-	<section class="section">
-		<div class="container">
-			<SectionHeading
-				eyebrow="Expertise snapshot"
-				title="The technical scope hiring teams need covered"
-				description="A focused profile for roles that need architecture judgment, embedded control implementation awareness, diagnostics, standards literacy, and cross-functional delivery."
-			/>
-			<div class="grid four">
-				{expertise.map((item) => <ExpertiseCard title={item.title} description={item.description} />)}
+		<Hero
+			title="Embedded Control Systems Architect"
+			phrase="Control Intelligence for Physical Systems"
+			body="I design and lead production-ready embedded control systems for vehicles and smart machines - connecting sensing, signal processing, embedded software, control algorithms, diagnostics, actuation, safety, and delivery."
+			credibility="PhD-trained electrical engineer with automotive OEM and Tier 1 experience across embedded control, diagnostics, safety-related development, and cross-functional delivery."
+		/>
+
+		<nav class="page-index" aria-label="Welcome page sections">
+			<a href="#expertise">Expertise</a>
+			<a href="#control-chain">Control chain</a>
+			<a href="#writing">Writing</a>
+			<a href="#research">Research</a>
+			<a href="#cases">Cases</a>
+			<a href="#contact">Contact</a>
+		</nav>
+
+		<section id="expertise" class="section island-section">
+			<div class="container">
+				<SectionHeading
+					eyebrow="Expertise snapshot"
+					title="The technical scope hiring teams need covered"
+					description="A focused profile for roles that need architecture judgment, embedded control implementation awareness, diagnostics, standards literacy, and cross-functional delivery."
+				/>
+				<div class="grid four island-grid">
+					{expertise.map((item) => <ExpertiseCard title={item.title} description={item.description} />)}
+				</div>
 			</div>
-		</div>
-	</section>
+		</section>
 
-	<section class="section">
-		<div class="container">
-			<SectionHeading
-				eyebrow="The control chain I work across"
-				title="Sensors -> Signals -> Software -> Control -> Actuation -> Behavior"
-				description="I work across this chain to help physical systems sense, decide, and act reliably."
-			/>
-			<SystemModel />
-		</div>
-	</section>
-
-	<section class="section">
-		<div class="container">
-			<SectionHeading
-				eyebrow="Writing roadmap"
-				title="Topics I use to explain control systems work clearly"
-				description="Planned writing topics that frame embedded control architecture, diagnostics, and technical leadership for physical systems."
-			/>
-			<div class="grid three">
-				{posts.map((entry) => <PostCard slug={toSlug(entry.id)} data={entry.data} />)}
+		<section id="control-chain" class="section island-section">
+			<div class="container">
+				<SectionHeading
+					eyebrow="The control chain I work across"
+					title="Sensors -> Signals -> Software -> Control -> Actuation -> Behavior"
+					description="I work across this chain to help physical systems sense, decide, and act reliably."
+				/>
+				<SystemModel />
 			</div>
-		</div>
-	</section>
+		</section>
 
-	<section class="section">
-		<div class="container research-band">
-			<div>
-				<p class="eyebrow">Research foundation</p>
-				<h2>Modeling and control depth, applied to production embedded systems</h2>
+		<section id="writing" class="section island-section compact-island">
+			<div class="container">
+				<SectionHeading
+					eyebrow="Writing roadmap"
+					title="Topics I use to explain control systems work clearly"
+					description="Planned writing topics that frame embedded control architecture, diagnostics, and technical leadership for physical systems."
+				/>
+				<div class="grid three island-grid">
+					{posts.map((entry) => <PostCard slug={toSlug(entry.id)} data={entry.data} />)}
+				</div>
 			</div>
-			<p>{researchSummary}</p>
-			<a class="button" href={`${baseUrl}research/`}>View research background</a>
-		</div>
-	</section>
+		</section>
 
-	<section class="section">
-		<div class="container">
-			<SectionHeading
-				eyebrow="Selected experience cases"
-				title="Representative work, generalized for confidentiality"
-				description="These cases show the type of architecture, controls, diagnostics, and delivery leadership I bring without naming OEMs, suppliers, products, internal requirements, or implementation details."
-			/>
-			<div class="grid three">
-				{cases.map((entry) => <CaseCard slug={toSlug(entry.id)} data={entry.data} />)}
+		<section id="research" class="section island-section research-island">
+			<div class="container research-band">
+				<div>
+					<p class="eyebrow">Research foundation</p>
+					<h2>Modeling and control depth, applied to production embedded systems</h2>
+				</div>
+				<p>{researchSummary}</p>
+				<a class="button" href={`${baseUrl}research/`}>View research background</a>
 			</div>
-		</div>
-	</section>
+		</section>
 
-	<section class="section">
-		<div class="container">
-			<ContactCTA />
-		</div>
-	</section>
+		<section id="cases" class="section island-section">
+			<div class="container">
+				<SectionHeading
+					eyebrow="Selected experience cases"
+					title="Representative work, generalized for confidentiality"
+					description="These cases show the type of architecture, controls, diagnostics, and delivery leadership I bring without naming OEMs, suppliers, products, internal requirements, or implementation details."
+				/>
+				<div class="grid three island-grid">
+					{cases.map((entry) => <CaseCard slug={toSlug(entry.id)} data={entry.data} />)}
+				</div>
+			</div>
+		</section>
+
+		<section id="contact" class="section island-section contact-island">
+			<div class="container">
+				<ContactCTA />
+			</div>
+		</section>
+	</div>
 </Layout>
 
 <style>
+	.welcome-page {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.welcome-cover {
+		min-height: 120px;
+		border: 1px solid var(--color-border);
+		border-radius: calc(var(--radius) * 1.5);
+		background:
+			linear-gradient(135deg, rgba(37, 99, 235, 0.11), transparent 42%),
+			linear-gradient(90deg, rgba(17, 24, 39, 0.05) 1px, transparent 1px),
+			linear-gradient(180deg, rgba(17, 24, 39, 0.05) 1px, transparent 1px),
+			var(--color-surface);
+		background-size: auto, 28px 28px, 28px 28px;
+	}
+
+	.page-index {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		border: 1px solid var(--color-border);
+		border-radius: calc(var(--radius) * 1.5);
+		background: var(--color-surface);
+		padding: 0.75rem;
+	}
+
+	.page-index a {
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		padding: 0.32rem 0.65rem;
+		background: var(--color-bg);
+		color: var(--color-muted);
+		font-size: 0.86rem;
+		text-decoration: none;
+	}
+
+	.page-index a:hover {
+		border-color: var(--color-accent);
+		color: var(--color-accent);
+	}
+
+	.island-section {
+		border: 1px solid var(--color-border);
+		border-radius: calc(var(--radius) * 1.5);
+		background: var(--color-surface);
+		padding: 1.25rem;
+	}
+
+	.island-section + .island-section {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.compact-island,
+	.research-island {
+		background: var(--color-bg-soft);
+	}
+
+	.contact-island {
+		margin-bottom: 0.5rem;
+	}
+
+	.island-grid {
+		gap: 1rem;
+	}
+
+	.welcome-page :global(.hero.section) {
+		border: 1px solid var(--color-border);
+		border-radius: calc(var(--radius) * 1.5);
+		background: var(--color-surface);
+		padding: 1.25rem;
+	}
+
+	.welcome-page :global(.hero-panel) {
+		background: var(--color-bg);
+	}
+
+	.welcome-page :global(.expertise-card),
+	.welcome-page :global(.case-card),
+	.welcome-page :global(.post-card) {
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		background: var(--color-surface);
+		padding: 1rem;
+	}
+
+	.welcome-page :global(.expertise-card) {
+		background: var(--color-bg);
+	}
+
+	.welcome-page :global(.case-card),
+	.welcome-page :global(.post-card) {
+		align-content: start;
+	}
+
+	.welcome-page :global(.case-card:hover),
+	.welcome-page :global(.post-card:hover) {
+		border-color: var(--color-accent);
+	}
+
 	.research-band {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
 		gap: 1rem;
 		align-items: start;
-		border-top: 1px solid var(--color-border);
-		padding-top: 1.25rem;
 	}
 
 	.research-band div {
@@ -145,6 +256,17 @@ const baseUrl = import.meta.env.BASE_URL;
 	@media (min-width: 980px) {
 		.research-band {
 			grid-template-columns: minmax(0, 1fr) minmax(260px, 360px) auto;
+		}
+	}
+
+	@media (max-width: 680px) {
+		.welcome-cover {
+			min-height: 88px;
+		}
+
+		.island-section,
+		.welcome-page :global(.hero.section) {
+			padding: 1rem;
 		}
 	}
 </style>
