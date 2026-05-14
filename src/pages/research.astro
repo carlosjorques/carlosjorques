@@ -1,7 +1,12 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import ContactCTA from '../components/ContactCTA.astro';
+
+const researchItems = await getCollection('research');
+const featuredItems = researchItems.filter((item) => item.data.featured);
+const supportingItems = researchItems.filter((item) => !item.data.featured);
 ---
 
 <Layout
@@ -28,28 +33,53 @@ import ContactCTA from '../components/ContactCTA.astro';
 
 	<section class="section">
 		<div class="container research-grid">
-			<section class="panel research-card">
-				<p class="eyebrow">PhD thesis</p>
-				<h2>Thesis details to add</h2>
-				<p>Add thesis title, institution, year, abstract link, and any public repository links.</p>
-			</section>
-			<section class="panel research-card">
-				<p class="eyebrow">Selected publications</p>
-				<h2>Publication list to add</h2>
-				<p>Add selected peer-reviewed publications with links to DOI, publisher pages, or PDFs.</p>
-			</section>
-			<section class="panel research-card">
-				<p class="eyebrow">Research themes</p>
-				<h2>Modeling, analysis, and control</h2>
-				<p>Add themes such as modeling, estimation, control, physical systems, and validation.</p>
-			</section>
-			<section class="panel research-card">
-				<p class="eyebrow">External links</p>
-				<h2>Scholar and ORCID links to add</h2>
-				<p>Add Google Scholar, ORCID, university profile, publication list, or repository links.</p>
-			</section>
+			{
+				featuredItems.map((item) => (
+					<section
+						id={item.data.type === 'Selected publications' ? 'publications' : undefined}
+						class="panel research-card"
+					>
+						<p class="eyebrow">{item.data.type}</p>
+						<h2>{item.data.title}</h2>
+						<p>{item.data.summary}</p>
+						{item.data.link && (
+							<a href={item.data.link} class="text-link">
+								View public link
+							</a>
+						)}
+					</section>
+				))
+			}
 		</div>
 	</section>
+
+	{
+		supportingItems.length > 0 && (
+			<section class="section">
+				<div class="container">
+					<SectionHeading
+						eyebrow="External research profiles"
+						title="Public research links"
+						description="Add verified public profiles here when Google Scholar, ORCID, university, or publication links are ready."
+					/>
+					<div class="research-list">
+						{supportingItems.map((item) => (
+							<div class="panel research-card">
+								<p class="eyebrow">{item.data.type}</p>
+								<h2>{item.data.title}</h2>
+								<p>{item.data.summary}</p>
+								{item.data.link && (
+									<a href={item.data.link} class="text-link">
+										View public link
+									</a>
+								)}
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+		)
+	}
 
 	<section class="section">
 		<div class="container">
@@ -73,6 +103,17 @@ import ContactCTA from '../components/ContactCTA.astro';
 
 	.research-card h2 {
 		font-size: 1.4rem;
+	}
+
+	.text-link {
+		color: var(--color-accent-dark);
+		font-weight: 650;
+		text-decoration: none;
+	}
+
+	.research-list {
+		display: grid;
+		gap: 18px;
 	}
 
 	@media (max-width: 760px) {

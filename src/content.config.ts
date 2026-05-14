@@ -36,4 +36,16 @@ const writing = defineCollection({
 	}),
 });
 
-export const collections = { cases, writing };
+const research = defineCollection({
+	loader: glob({ pattern: '**/*.md', base: './src/content/research' }),
+	schema: z.object({
+		title: z.string(),
+		type: z.string(),
+		year: z.number().optional(),
+		summary: z.string(),
+		link: z.string().optional(),
+		featured: z.boolean(),
+	}),
+});
+
+export const collections = { cases, writing, research };

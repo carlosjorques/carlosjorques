@@ -37,6 +37,10 @@ const cases = (await getCollection('cases'))
 	.filter((entry) => entry.data.featured)
 	.sort((a, b) => a.data.order - b.data.order);
 const posts = (await getCollection('writing')).filter((entry) => entry.data.featured);
+const researchItems = (await getCollection('research')).filter((entry) => entry.data.featured);
+const researchSummary =
+	researchItems.find((entry) => entry.data.type === 'Research themes')?.data.summary ??
+	'My research background supports rigorous thinking in modeling, analysis, and control, applied to production embedded systems where architecture, safety, software integration, diagnostics, standards, suppliers, and delivery constraints matter.';
 ---
 
 <Layout
@@ -106,12 +110,7 @@ const posts = (await getCollection('writing')).filter((entry) => entry.data.feat
 				<p class="eyebrow">Research foundation</p>
 				<h2>Modeling and control depth, applied to production embedded systems</h2>
 			</div>
-			<p>
-				My research background supports rigorous thinking in modeling, analysis, and control. The
-				professional focus of this site is industrial technical leadership where architecture,
-				safety, software integration, diagnostics, standards, suppliers, and delivery constraints
-				matter.
-			</p>
+			<p>{researchSummary}</p>
 			<a class="button" href="/research/">View research background</a>
 		</div>
 	</section>
