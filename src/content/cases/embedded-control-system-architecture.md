@@ -1,7 +1,7 @@
 ---
 title: Embedded Control System Architecture
 summary: Architecture of a production-oriented embedded control system across sensing, diagnostics, software interfaces, and actuation.
-role: Technical architecture and cross-functional alignment
+role: Control systems architecture and cross-functional alignment
 capabilities:
   - System architecture
   - Embedded software interfaces
@@ -19,15 +19,15 @@ order: 1
 
 ## Context
 
-Production embedded control systems must connect physical sensing, signal interpretation, software interfaces, diagnostics, actuation, safety expectations, and delivery constraints. The architectural work is not only about algorithms; it is about defining how the system should behave and how teams can implement, verify, and maintain that behavior.
+Production embedded control systems must connect physical sensing, signal interpretation, software interfaces, diagnostics, actuation, safety expectations, and delivery constraints. The architectural work is not only about algorithms; it is about defining system behavior, ownership boundaries, interfaces, and verification expectations clearly enough for multiple engineering groups to execute.
 
 ## Technical challenge
 
-The central challenge was to create a coherent control system structure that could be understood by software, controls, systems, diagnostics, calibration, supplier, and delivery stakeholders while remaining suitable for a production automotive environment.
+The central challenge was to create a coherent control system structure that could be understood by software, controls, systems, diagnostics, calibration, supplier, and delivery stakeholders while remaining suitable for a production automotive environment with real delivery constraints.
 
 ## My role
 
-I supported the definition of system behavior, interface boundaries, diagnostic responsibilities, control logic structure, and implementation considerations. The work required technical tradeoff decisions and alignment across disciplines without exposing proprietary design details.
+My role was to define and align system behavior, interface boundaries, diagnostic responsibilities, control logic structure, and implementation considerations. The work required technical tradeoff decisions across disciplines without exposing proprietary design details.
 
 ## System scope
 
@@ -39,11 +39,11 @@ The work was shaped by automotive development practices, safety-related thinking
 
 ## Outcome
 
-The result was a clearer production-oriented control architecture that could be discussed, implemented, integrated, and evolved across engineering groups.
+The result was a clearer production-oriented control architecture that gave engineering groups a shared language for behavior, interfaces, diagnostics, integration, and delivery.
 
 ## What this demonstrates
 
-This demonstrates embedded control system architecture across software, controls, diagnostics, actuation, safety, and delivery constraints for physical systems.
+This demonstrates senior embedded control system architecture across software, controls, diagnostics, actuation, safety, and delivery constraints for physical systems.
 
 ## Confidentiality note
 

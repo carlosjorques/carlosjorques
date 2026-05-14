@@ -19,8 +19,8 @@ const posts = (await getCollection('writing')).sort(
 		<div class="container">
 			<SectionHeading
 				eyebrow="Writing"
-				title="Embedded control architecture, diagnostics, and delivery"
-				description="Draft topics for articles on the engineering practices that turn physical system intent into production embedded software."
+				title="Planned articles on embedded control architecture and delivery"
+				description="These writing placeholders define the first editorial direction: how physical system intent becomes production embedded software, diagnostics, and reliable machine behavior."
 			/>
 			<div class="grid three">
 				{posts.map((entry) => <PostCard slug={toSlug(entry.id)} data={entry.data} />)}

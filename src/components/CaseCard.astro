@@ -27,6 +27,9 @@ const { slug, data } = Astro.props;
 		<ul class="tag-list" aria-label="Capabilities">
 			{data.capabilities.slice(0, 3).map((item) => <li class="tag">{item}</li>)}
 		</ul>
+		<ul class="tag-list" aria-label="Standards and environment">
+			{data.standards.slice(0, 2).map((item) => <li class="tag muted">{item}</li>)}
+		</ul>
 	</div>
 </article>
 
@@ -65,5 +68,10 @@ const { slug, data } = Astro.props;
 		color: var(--color-steel);
 		font-size: 0.92rem;
 		font-weight: 650;
+	}
+
+	:global(.tag.muted) {
+		color: #6d777a;
+		background: rgba(231, 235, 236, 0.54);
 	}
 </style>

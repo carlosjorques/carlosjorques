@@ -14,7 +14,7 @@ interface Props {
 }
 
 const { slug, data } = Astro.props;
-const label = data.draft ? 'Draft article' : data.publishDate.toLocaleDateString('en', {
+const label = data.draft ? 'Planned article' : data.publishDate.toLocaleDateString('en', {
 	year: 'numeric',
 	month: 'short',
 	day: 'numeric',

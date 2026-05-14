@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const label = entry.data.draft
-	? 'Draft article placeholder'
+	? 'Planned article placeholder'
 	: entry.data.publishDate.toLocaleDateString('en', {
 			year: 'numeric',
 			month: 'long',
