@@ -1,0 +1,70 @@
+---
+interface PostData {
+	title: string;
+	description: string;
+	publishDate: Date;
+	category: string;
+	tags: string[];
+	draft: boolean;
+}
+
+interface Props {
+	slug: string;
+	data: PostData;
+}
+
+const { slug, data } = Astro.props;
+const label = data.draft ? 'Draft article' : data.publishDate.toLocaleDateString('en', {
+	year: 'numeric',
+	month: 'short',
+	day: 'numeric',
+});
+---
+
+<article class="post-card">
+	<p class="eyebrow">{data.category}</p>
+	<h3><a href={`/writing/${slug}/`}>{data.title}</a></h3>
+	<p>{data.description}</p>
+	<div class="post-meta">
+		<span>{label}</span>
+		<ul class="tag-list" aria-label="Tags">
+			{data.tags.slice(0, 3).map((tag) => <li class="tag">{tag}</li>)}
+		</ul>
+	</div>
+</article>
+
+<style>
+	.post-card {
+		display: grid;
+		gap: 14px;
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		background: rgba(255, 255, 255, 0.58);
+		padding: 22px;
+	}
+
+	.post-card h3 {
+		font-size: 1.25rem;
+		line-height: 1.25;
+	}
+
+	.post-card h3 a {
+		text-decoration: none;
+	}
+
+	.post-card p:not(.eyebrow) {
+		line-height: 1.65;
+	}
+
+	.post-meta {
+		display: grid;
+		gap: 12px;
+		margin-top: 10px;
+	}
+
+	.post-meta span {
+		color: var(--color-subtle);
+		font-family: var(--font-mono);
+		font-size: 0.76rem;
+	}
+</style>

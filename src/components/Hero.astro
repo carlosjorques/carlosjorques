@@ -1,0 +1,109 @@
+---
+interface Props {
+	title: string;
+	phrase: string;
+	body: string;
+	credibility: string;
+}
+
+const { title, phrase, body, credibility } = Astro.props;
+---
+
+<section class="hero section">
+	<div class="container hero-grid">
+		<div class="hero-copy">
+			<p class="eyebrow">{phrase}</p>
+			<h1>{title}</h1>
+			<p class="lead">{body}</p>
+			<p class="credibility">{credibility}</p>
+			<div class="button-row" aria-label="Primary actions">
+				<a class="button primary" href="/contact/">Contact me</a>
+				<a class="button" href="/cases/">View cases</a>
+				<a class="button" href="/cv-placeholder.pdf">Download CV</a>
+			</div>
+		</div>
+		<aside class="hero-panel" aria-label="Professional positioning">
+			<div>
+				<span>Focus</span>
+				<strong>Embedded control systems for physical systems</strong>
+			</div>
+			<div>
+				<span>Environment</span>
+				<strong>Automotive OEM / Tier 1 delivery contexts</strong>
+			</div>
+			<div>
+				<span>Working range</span>
+				<strong>Sensing, software, control, diagnostics, actuation, safety</strong>
+			</div>
+		</aside>
+	</div>
+</section>
+
+<style>
+	.hero {
+		padding-top: clamp(64px, 10vw, 132px);
+	}
+
+	.hero-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 340px;
+		gap: clamp(32px, 6vw, 80px);
+		align-items: end;
+	}
+
+	.hero-copy {
+		display: grid;
+		gap: 24px;
+	}
+
+	.credibility {
+		max-width: 850px;
+		border-left: 3px solid var(--color-accent);
+		padding-left: 16px;
+		color: #3f474a;
+		font-size: 1rem;
+	}
+
+	.hero-panel {
+		display: grid;
+		gap: 1px;
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		background: var(--color-border);
+		box-shadow: var(--shadow-soft);
+	}
+
+	.hero-panel div {
+		background: rgba(255, 255, 255, 0.72);
+		padding: 18px;
+	}
+
+	.hero-panel span,
+	.hero-panel strong {
+		display: block;
+	}
+
+	.hero-panel span {
+		margin-bottom: 8px;
+		color: var(--color-subtle);
+		font-family: var(--font-mono);
+		font-size: 0.73rem;
+		text-transform: uppercase;
+	}
+
+	.hero-panel strong {
+		font-size: 0.98rem;
+		line-height: 1.45;
+	}
+
+	@media (max-width: 900px) {
+		.hero-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.hero-panel {
+			max-width: 540px;
+		}
+	}
+</style>

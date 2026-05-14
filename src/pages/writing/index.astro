@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import PostCard from '../../components/PostCard.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+
+const toSlug = (id: string) => id.replace(/\.md$/, '');
+const posts = (await getCollection('writing')).sort(
+	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+);
+---
+
+<Layout
+	title="Writing"
+	description="Writing by Carlos Jorques on embedded control architecture, sensing, diagnostics, safety-critical automotive development, and technical leadership."
+>
+	<section class="section">
+		<div class="container">
+			<SectionHeading
+				eyebrow="Writing"
+				title="Embedded control architecture, diagnostics, and delivery"
+				description="Draft topics for articles on the engineering practices that turn physical system intent into production embedded software."
+			/>
+			<div class="grid three">
+				{posts.map((entry) => <PostCard slug={toSlug(entry.id)} data={entry.data} />)}
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<ContactCTA />
+		</div>
+	</section>
+</Layout>

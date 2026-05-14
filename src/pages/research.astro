@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+---
+
+<Layout
+	title="Research"
+	description="Research background for Carlos Jorques, supporting credibility in modeling, analysis, and control for production embedded systems."
+>
+	<section class="section">
+		<div class="narrow">
+			<SectionHeading
+				eyebrow="Research"
+				title="Research foundation for industrial control systems work"
+				description="Research supports credibility, but the main identity of this site is industrial technical leadership in embedded control systems."
+			/>
+			<div class="prose">
+				<p>
+					My research background provides a foundation in modeling, analysis, and control. My
+					professional focus is applying that depth to production embedded systems where
+					architecture, safety, software integration, diagnostics, standards, suppliers, and
+					delivery constraints matter.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container research-grid">
+			<section class="panel research-card">
+				<p class="eyebrow">PhD thesis</p>
+				<h2>Placeholder</h2>
+				<p>Add thesis title, institution, year, abstract link, and any public repository links.</p>
+			</section>
+			<section class="panel research-card">
+				<p class="eyebrow">Selected publications</p>
+				<h2>Placeholder</h2>
+				<p>Add selected peer-reviewed publications with links to DOI, publisher pages, or PDFs.</p>
+			</section>
+			<section class="panel research-card">
+				<p class="eyebrow">Research themes</p>
+				<h2>Placeholder</h2>
+				<p>Add themes such as modeling, estimation, control, physical systems, and validation.</p>
+			</section>
+			<section class="panel research-card">
+				<p class="eyebrow">External links</p>
+				<h2>Placeholder</h2>
+				<p>Add Google Scholar, ORCID, university profile, publication list, or repository links.</p>
+			</section>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<ContactCTA />
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.research-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 18px;
+	}
+
+	.research-card {
+		display: grid;
+		gap: 14px;
+		padding: 26px;
+	}
+
+	.research-card h2 {
+		font-size: 1.4rem;
+	}
+
+	@media (max-width: 760px) {
+		.research-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

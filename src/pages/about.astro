@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+---
+
+<Layout
+	title="About"
+	description="About Carlos Jorques, an embedded control systems architect focused on physical systems, automotive software, diagnostics, and technical delivery."
+>
+	<section class="section">
+		<div class="narrow">
+			<SectionHeading
+				eyebrow="About"
+				title="Embedded control systems for physical systems"
+				description="I work where software meets the physical world: sensing, signal processing, control logic, diagnostics, actuation, safety expectations, and delivery constraints."
+			/>
+			<div class="prose">
+				<p>
+					I am an electrical engineer and PhD-trained control/software engineer focused on
+					production-ready embedded control systems. My work connects physical system behavior
+					with embedded software architecture, control algorithms, diagnostic strategies, and
+					practical implementation constraints.
+				</p>
+				<p>
+					My professional experience includes automotive OEM and Tier 1 environments, where
+					engineering quality depends on more than isolated technical decisions. Requirements,
+					interfaces, supplier collaboration, safety-related development, A-SPICE expectations,
+					AUTOSAR-oriented integration, verification, and delivery timing all shape the solution.
+				</p>
+				<p>
+					My leadership style is technical and alignment-oriented: make the system behavior clear,
+					define the responsibilities between disciplines, expose tradeoffs early, and help teams
+					move from requirements and concepts toward production software that can be integrated,
+					tested, maintained, and trusted.
+				</p>
+				<p>
+					I am especially interested in physical systems, embedded control architecture,
+					diagnostics, and reliable machine behavior - the engineering layer that helps smart
+					machines sense, decide, protect themselves, and act.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container about-grid">
+			<div class="panel about-card">
+				<p class="eyebrow">Profile</p>
+				<h2>Technical depth with delivery context</h2>
+				<p>
+					PhD-trained electrical engineer with experience across embedded control, diagnostics,
+					safety-related development, software/control integration, and cross-functional delivery.
+				</p>
+			</div>
+			<div class="panel about-card">
+				<p class="eyebrow">Operating mode</p>
+				<h2>Architecture, alignment, implementation</h2>
+				<p>
+					I help connect stakeholders and engineering disciplines around clear system behavior,
+					realistic interfaces, and production-ready embedded control decisions.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<ContactCTA />
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.about-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 18px;
+	}
+
+	.about-card {
+		display: grid;
+		gap: 14px;
+		padding: 28px;
+	}
+
+	.about-card h2 {
+		font-size: clamp(1.45rem, 3vw, 2.25rem);
+	}
+
+	@media (max-width: 760px) {
+		.about-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

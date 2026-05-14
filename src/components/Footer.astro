@@ -1,0 +1,64 @@
+<footer class="site-footer">
+	<div class="container footer-grid">
+		<div>
+			<p class="eyebrow">Control Intelligence for Physical Systems</p>
+			<p class="footer-text">
+				Carlos Jorques designs embedded control systems for vehicles and smart machines,
+				connecting sensing, software, diagnostics, actuation, safety, and delivery.
+			</p>
+		</div>
+		<nav aria-label="Secondary navigation">
+			<a href="/research/">Research</a>
+			<a href="/cases/">Cases</a>
+			<a href="/writing/">Writing</a>
+			<a href="/contact/">Contact</a>
+		</nav>
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		border-top: 1px solid var(--color-border);
+		padding: 36px 0;
+		background: var(--color-bg-soft);
+	}
+
+	.footer-grid {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 28px;
+		align-items: start;
+	}
+
+	.footer-text {
+		max-width: 660px;
+		margin-top: 10px;
+	}
+
+	nav {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px 18px;
+		justify-content: flex-end;
+	}
+
+	nav a {
+		color: var(--color-muted);
+		font-size: 0.95rem;
+		text-decoration: none;
+	}
+
+	nav a:hover {
+		color: var(--color-accent-dark);
+	}
+
+	@media (max-width: 720px) {
+		.footer-grid {
+			grid-template-columns: 1fr;
+		}
+
+		nav {
+			justify-content: flex-start;
+		}
+	}
+</style>
