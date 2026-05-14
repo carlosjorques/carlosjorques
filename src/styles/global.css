@@ -152,7 +152,7 @@ li::marker {
 
 .main-body {
 	flex: 1;
-	padding: 3.2rem 2.75rem 2rem;
+	padding: 1rem 2.75rem 1.5rem;
 }
 
 .container,
@@ -309,7 +309,7 @@ li::marker {
 
 @media (max-width: 1024px) {
 	.main-body {
-		padding: 2rem 1.5rem 1.5rem;
+		padding: 1rem 1.5rem 1.5rem;
 	}
 }
 

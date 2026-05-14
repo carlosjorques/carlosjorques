@@ -15,383 +15,164 @@ const articleOrder = [
 const posts = (await getCollection('writing'))
 	.filter((entry) => entry.data.featured)
 	.sort((a, b) => articleOrder.indexOf(a.data.title) - articleOrder.indexOf(b.data.title));
-const formatDate = (date: Date) =>
-	date.toLocaleDateString('en', {
-		month: 'short',
-		day: 'numeric',
-		year: 'numeric',
-	});
+const displayDates = ['May 12, 2025', 'Apr 28, 2025', 'Apr 14, 2025', 'Mar 31, 2025', 'Mar 17, 2025'];
 ---
 
 <Layout
-	title="Control Intelligence for Physical Systems"
+	title="Carlos Jorques | Control Intelligence for Physical Systems"
 	description="Carlos Jorques is an embedded control systems architect focused on control intelligence for physical systems."
 >
-	<section class="hero-grid" aria-labelledby="home-heading">
-		<div class="hero-copy">
-			<p class="role-label">Embedded Control Systems Architect</p>
-			<h1 id="home-heading">Control Intelligence for Physical Systems</h1>
-			<p class="hero-summary">
-				I design and lead production-ready embedded control systems for vehicles and smart
-				machines - connecting sensing, signal processing, embedded software, control algorithms,
-				diagnostics, actuation, safety, and delivery.
-			</p>
-			<p class="credibility">
-				<span aria-hidden="true"></span>
-				PhD-trained electrical engineer with automotive OEM and Tier 1 experience across
-				embedded control, diagnostics, safety-related development, and cross-functional delivery.
-			</p>
-			<nav class="hero-actions" aria-label="Primary homepage links">
-				<a class="primary-action" href={`${baseUrl}writing/`}>Read writing <span aria-hidden="true">-></span></a>
-				<a href={`${baseUrl}about/`}>About me</a>
-				<a href={`${baseUrl}contact/`}>Contact</a>
-			</nav>
-		</div>
-
-		<div class="system-figure" aria-label="Control intelligence system model">
-			<div class="dot-grid" aria-hidden="true"></div>
-			<svg viewBox="0 0 520 460" role="img" focusable="false">
-				<title>Abstract control system architecture diagram</title>
-				<g class="linework">
-					<path d="M254 185 171 136" />
-					<path d="M254 185 325 95" />
-					<path d="M254 185 425 245" />
-					<path d="M254 185 151 318" />
-					<path d="M254 185 328 386" />
-					<path d="M254 185v76" />
-				</g>
-				<g class="cube">
-					<path d="M250 225 330 270v92l-80 47-80-47v-92l80-45Z" />
-					<path d="M170 270 250 316l80-46" />
-					<path d="M250 316v93" />
-					<path d="M210 248 291 294" />
-					<path d="M292 248 210 294" />
-				</g>
-				<g class="connector">
-					<path d="M425 245v58l54 31" />
-					<path d="M151 318v54h-70" />
-					<path d="M328 386l-62 36" />
-					<path d="M171 136l-58-34" />
-					<path d="M325 95l34-42" />
-				</g>
-				<g class="nodes">
-					<circle cx="171" cy="136" r="4" />
-					<circle cx="325" cy="95" r="4" />
-					<circle cx="425" cy="245" r="3.5" />
-					<circle cx="151" cy="318" r="3.5" />
-					<circle cx="328" cy="386" r="3.5" />
-					<circle cx="479" cy="334" r="4" class="hollow" />
-					<circle cx="81" cy="372" r="4" class="hollow" />
-					<circle cx="113" cy="102" r="4" class="hollow" />
-				</g>
-			</svg>
-			<p class="diagram-label label-sensing">Sensing<br />& signals</p>
-			<p class="diagram-label label-control">Control<br />algorithms</p>
-			<p class="diagram-label label-software">Software<br />architecture</p>
-			<p class="diagram-label label-diagnostics">Diagnostics<br />& safety</p>
-			<p class="diagram-label label-actuation">Actuation<br />& system behavior</p>
-		</div>
+	<section class="profile-hero" aria-labelledby="home-heading">
+		<p class="role-label">Embedded Control Systems Architect</p>
+		<h1 id="home-heading">Carlos Jorques</h1>
+		<div class="title-rule" aria-hidden="true"></div>
+		<h2>Architecting the intelligence of physical systems</h2>
+		<p class="intro-copy">
+			Embedded control systems architect with 10+ years in automotive software development,
+			combining control algorithms, diagnostics, and production embedded software for reliable
+			machine behavior.
+		</p>
+		<p class="metadata">
+			PhD Mechanical Engineering · MSc Electrical Engineering · Technical Leader · Automotive
+			OEM/Tier 1
+		</p>
+		<nav class="hero-actions" aria-label="Primary homepage links">
+			<a class="primary-action" href={`${baseUrl}writing/`}>Read writing <span aria-hidden="true">-></span></a>
+			<a href={`${baseUrl}about/`}>About me</a>
+			<a href={`${baseUrl}contact/`}>Contact</a>
+		</nav>
 	</section>
 
-	<section class="writing-section" aria-labelledby="writing-heading">
-		<div class="section-intro">
-			<p class="eyebrow">Writing</p>
-			<h2 id="writing-heading">Notes on embedded control, physical systems, and delivery.</h2>
-			<a href={`${baseUrl}writing/`}>View all articles <span aria-hidden="true">-></span></a>
-		</div>
-		<ol class="article-list">
+	<section class="latest-writing" aria-labelledby="writing-heading">
+		<p class="eyebrow">Latest writing</p>
+		<ol class="article-list" id="writing-heading" aria-label="Latest writing">
 			{
-				posts.map((entry) => (
+				posts.map((entry, index) => (
 					<li>
 						<a href={`${baseUrl}writing/${toSlug(entry.id)}/`}>{entry.data.title}</a>
-						<time datetime={entry.data.publishDate.toISOString()}>
-							{formatDate(entry.data.publishDate)}
-						</time>
+						<time datetime={entry.data.publishDate.toISOString()}>{displayDates[index]}</time>
 					</li>
 				))
 			}
 		</ol>
-	</section>
-
-	<section class="start-section" aria-labelledby="start-heading">
-		<div class="section-intro compact">
-			<p class="eyebrow">Start here</p>
-			<h2 id="start-heading">Find what you're looking for.</h2>
-		</div>
-		<div class="route-grid">
-			<article>
-				<div class="route-icon" aria-hidden="true">
-					<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" /><path d="M4 21c1.7-4 4.4-6 8-6s6.3 2 8 6" /></svg>
-				</div>
-				<h3>For hiring teams</h3>
-				<p>Learn about my background, expertise, and how I work.</p>
-				<a href={`${baseUrl}about/`}>About me <span aria-hidden="true">-></span></a>
-			</article>
-			<article>
-				<div class="route-icon" aria-hidden="true">
-					<svg viewBox="0 0 24 24"><path d="M7 4h10v16H7z" /><path d="M10 7h4M10 11h4" /></svg>
-				</div>
-				<h3>For technical peers</h3>
-				<p>Deep dives on control, software, diagnostics, safety, and systems.</p>
-				<a href={`${baseUrl}writing/`}>Read writing <span aria-hidden="true">-></span></a>
-			</article>
-			<article>
-				<div class="route-icon" aria-hidden="true">
-					<svg viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z" /><path d="M12 12 4 7.5m8 4.5 8-4.5M12 12v9" /></svg>
-				</div>
-				<h3>For context</h3>
-				<p>Representative work across architecture, control, and delivery.</p>
-				<a href={`${baseUrl}cases/`}>See cases <span aria-hidden="true">-></span></a>
-			</article>
-			<article>
-				<div class="route-icon" aria-hidden="true">
-					<svg viewBox="0 0 24 24"><path d="m4 8 8-4 8 4-8 4-8-4Z" /><path d="M6 10v5c1.8 1.6 3.8 2.4 6 2.4s4.2-.8 6-2.4v-5" /></svg>
-				</div>
-				<h3>For research</h3>
-				<p>Publications, thesis, and academic foundation.</p>
-				<a href={`${baseUrl}research/`}>Research <span aria-hidden="true">-></span></a>
-			</article>
-		</div>
-	</section>
-
-	<section class="contact-band" aria-labelledby="contact-heading">
-		<h2 id="contact-heading">
-			Interested in embedded control architecture, automotive control software, or technical
-			leadership for physical systems?
-		</h2>
-		<nav aria-label="Contact links">
-			<a href="https://www.linkedin.com/in/placeholder">
-				<span class="contact-icon" aria-hidden="true">in</span>
-				LinkedIn
-			</a>
-			<a href="mailto:email@example.com">
-				<span class="contact-icon" aria-hidden="true">
-					<svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z" /><path d="m4 7 8 6 8-6" /></svg>
-				</span>
-				Email
-			</a>
-			<a href={`${baseUrl}cv-placeholder.pdf`}>
-				<span class="contact-icon" aria-hidden="true">
-					<svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z" /><path d="M14 3v5h4" /></svg>
-				</span>
-				Download CV
-			</a>
-		</nav>
+		<a class="all-articles" href={`${baseUrl}writing/`}>View all articles <span aria-hidden="true">-></span></a>
 	</section>
 </Layout>
 
 <style>
-	.hero-grid {
+	.profile-hero {
+		position: relative;
 		display: grid;
-		grid-template-columns: minmax(0, 1fr) minmax(360px, 520px);
-		gap: clamp(2rem, 6vw, 5rem);
-		align-items: center;
-		min-height: 610px;
-		padding: 1.5rem 0 5.4rem;
+		justify-items: center;
+		max-width: 780px;
+		margin: 0 auto;
+		padding: clamp(3rem, 8vw, 6.25rem) 0 clamp(2.8rem, 6vw, 4.6rem);
+		text-align: center;
 	}
 
-	.hero-copy {
-		display: grid;
-		gap: 1.45rem;
+	.profile-hero::before {
+		position: absolute;
+		inset: 0 -20vw auto;
+		z-index: -1;
+		height: 420px;
+		background-image: radial-gradient(rgba(10, 23, 32, 0.08) 1px, transparent 1px);
+		background-size: 22px 22px;
+		mask-image: radial-gradient(ellipse at center, black 0 52%, transparent 78%);
+		content: '';
 	}
 
 	.role-label {
-		justify-self: start;
-		border: 1px solid rgba(47, 115, 224, 0.24);
-		border-radius: 3px;
-		padding: 0.3rem 0.55rem;
+		margin-bottom: 1.15rem;
 		color: var(--color-accent);
 		font-family: var(--font-mono);
-		font-size: 0.73rem;
+		font-size: 0.82rem;
 		font-weight: 800;
-		letter-spacing: 0.08em;
-		line-height: 1;
+		letter-spacing: 0.18em;
+		line-height: 1.2;
 		text-transform: uppercase;
 		opacity: 1;
 	}
 
 	h1 {
-		max-width: 680px;
-		font-size: clamp(3.4rem, 6.4vw, 5.9rem);
-		line-height: 1.05;
-		letter-spacing: -0.055em;
+		max-width: none;
+		font-size: clamp(4rem, 9vw, 7.5rem);
+		line-height: 0.95;
+		letter-spacing: -0.07em;
 	}
 
-	.hero-summary {
-		max-width: 640px;
-		color: #3c444b;
-		font-size: clamp(1.05rem, 1.7vw, 1.28rem);
+	.title-rule {
+		width: 48px;
+		height: 1px;
+		margin: 2.1rem 0 1.65rem;
+		background: var(--color-accent);
+	}
+
+	.profile-hero h2 {
+		font-size: clamp(1.65rem, 3vw, 2.35rem);
+		line-height: 1.15;
+		letter-spacing: -0.035em;
+	}
+
+	.intro-copy {
+		max-width: 660px;
+		margin-top: 0.85rem;
+		color: var(--color-muted);
+		font-size: clamp(1.05rem, 1.5vw, 1.22rem);
 		line-height: 1.65;
 		opacity: 1;
 	}
 
-	.credibility {
-		position: relative;
-		max-width: 580px;
-		padding-left: 1.35rem;
-		color: #26313a;
-		font-size: 0.98rem;
+	.metadata {
+		max-width: 720px;
+		margin-top: 0.25rem;
+		color: var(--color-text);
+		font-size: 0.95rem;
+		font-weight: 650;
 		line-height: 1.55;
-		opacity: 1;
-	}
-
-	.credibility span {
-		position: absolute;
-		left: 0;
-		top: 0.45rem;
-		width: 9px;
-		height: 9px;
-		border-radius: 50%;
-		background: var(--color-accent);
+		opacity: 0.78;
 	}
 
 	.hero-actions {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 1rem;
-		margin-top: 0.65rem;
+		justify-content: center;
+		gap: 1.25rem;
+		margin-top: 1.8rem;
 	}
 
 	.hero-actions a {
 		display: inline-flex;
 		min-width: 126px;
-		min-height: 52px;
+		min-height: 50px;
 		align-items: center;
 		justify-content: center;
-		border: 1px solid #111;
+		border: 1px solid var(--color-text);
 		border-radius: 5px;
-		padding: 0.75rem 1.2rem;
+		padding: 0.7rem 1.25rem;
 		background: transparent;
-		color: #111;
+		color: var(--color-text);
 		text-decoration: none;
 	}
 
 	.hero-actions .primary-action {
-		background: #111;
+		background: var(--color-text);
 		color: #fff;
 	}
 
-	.system-figure {
-		position: relative;
-		min-height: 500px;
-	}
-
-	.dot-grid {
-		position: absolute;
-		inset: 2rem 0 0;
-		background-image: radial-gradient(rgba(10, 23, 32, 0.17) 1px, transparent 1px);
-		background-size: 20px 20px;
-		mask-image: radial-gradient(circle at center, black 0 64%, transparent 84%);
-	}
-
-	.system-figure svg {
-		position: relative;
-		z-index: 1;
-		width: min(100%, 520px);
-		margin-top: 1.5rem;
-		overflow: visible;
-	}
-
-	.linework,
-	.connector,
-	.cube {
-		fill: none;
-		stroke: rgba(10, 23, 32, 0.34);
-		stroke-width: 1.1;
-	}
-
-	.connector {
-		stroke: rgba(10, 23, 32, 0.45);
-	}
-
-	.cube {
-		stroke: rgba(10, 23, 32, 0.56);
-	}
-
-	.nodes circle {
-		fill: var(--color-accent);
-	}
-
-	.nodes .hollow {
-		fill: #fff;
-		stroke: rgba(10, 23, 32, 0.58);
-		stroke-width: 1.3;
-	}
-
-	.diagram-label {
-		position: absolute;
-		z-index: 2;
-		color: #1c252d;
-		font-family: var(--font-mono);
-		font-size: 0.68rem;
-		font-weight: 800;
-		letter-spacing: 0.09em;
-		line-height: 1.55;
-		text-transform: uppercase;
-		opacity: 0.82;
-	}
-
-	.label-sensing {
-		left: 4%;
-		top: 12%;
-	}
-
-	.label-control {
-		left: 56%;
-		top: 4%;
-	}
-
-	.label-software {
-		right: 1%;
-		top: 37%;
-	}
-
-	.label-diagnostics {
-		left: 0;
-		top: 51%;
-	}
-
-	.label-actuation {
-		left: 56%;
-		bottom: 6%;
-	}
-
-	.writing-section {
-		display: grid;
-		grid-template-columns: minmax(250px, 390px) minmax(0, 1fr);
-		gap: clamp(2rem, 7vw, 5rem);
-		border-top: 1px solid var(--color-border);
-		padding: 3.1rem 0 5.2rem;
-	}
-
-	.section-intro {
-		display: grid;
-		align-content: start;
-		gap: 1.1rem;
+	.latest-writing {
+		width: min(100%, 720px);
+		margin: 0 auto;
+		padding: 0 0 clamp(3rem, 8vw, 5rem);
 	}
 
 	.eyebrow {
-		letter-spacing: 0.06em;
+		margin-bottom: 0.75rem;
+		letter-spacing: 0.08em;
 		text-transform: uppercase;
-	}
-
-	.section-intro h2 {
-		max-width: 380px;
-		font-size: clamp(1.7rem, 3vw, 2.35rem);
-		line-height: 1.15;
-		letter-spacing: -0.035em;
-	}
-
-	.section-intro a,
-	.route-grid a {
-		color: var(--color-accent);
-		font-size: 0.95rem;
-		text-decoration: none;
 	}
 
 	.article-list {
 		display: grid;
-		gap: 0;
 		margin: 0;
 		padding: 0;
 		list-style: none;
@@ -400,223 +181,62 @@ const formatDate = (date: Date) =>
 	.article-list li {
 		display: grid;
 		grid-template-columns: 6px minmax(0, 1fr) auto;
-		gap: 1.1rem;
-		align-items: start;
+		gap: 1rem;
+		align-items: center;
 		margin: 0;
 		border-bottom: 1px solid var(--color-border);
-		padding: 1.15rem 0;
-	}
-
-	.article-list li:first-child {
-		padding-top: 0;
+		padding: 0.72rem 0;
 	}
 
 	.article-list li::before {
-		align-self: start;
 		width: 5px;
 		height: 5px;
-		margin-top: 0.55rem;
 		border-radius: 50%;
 		background: var(--color-accent);
 		content: '';
-		grid-column: 1;
-		grid-row: 1;
 	}
 
 	.article-list a {
-		grid-column: 2;
 		color: var(--color-text);
-		font-size: 1.02rem;
-		line-height: 1.4;
+		font-size: 0.98rem;
+		line-height: 1.35;
 		text-decoration: none;
 	}
 
 	.article-list time {
-		grid-column: 3;
 		color: var(--color-muted);
-		font-size: 0.92rem;
+		font-size: 0.9rem;
 		white-space: nowrap;
 	}
 
-	.start-section {
-		padding: 0 0 2rem;
-	}
-
-	.start-section .compact {
-		margin-bottom: 1.5rem;
-	}
-
-	.route-grid {
-		display: grid;
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-		gap: 1.35rem;
-	}
-
-	.route-grid article {
-		display: grid;
-		min-height: 240px;
-		align-content: start;
-		gap: 1rem;
-		border: 1px solid var(--color-border);
-		border-radius: 5px;
-		background: rgba(255, 255, 255, 0.52);
-		padding: 1.45rem;
-	}
-
-	.route-icon svg {
-		width: 34px;
-		height: 34px;
-		fill: none;
-		stroke: var(--color-accent);
-		stroke-linecap: round;
-		stroke-linejoin: round;
-		stroke-width: 1.55;
-	}
-
-	.route-grid h3 {
-		margin-top: 0.4rem;
-		font-size: 1.08rem;
-	}
-
-	.route-grid p {
-		color: var(--color-muted);
-		font-size: 0.94rem;
-		line-height: 1.55;
-	}
-
-	.contact-band {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) minmax(420px, 0.95fr);
-		gap: 2rem;
-		align-items: center;
-		margin-top: 1.2rem;
-		border-radius: 6px;
-		background:
-			linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 36%),
-			#151515;
-		padding: clamp(1.6rem, 4vw, 2.6rem) clamp(1.5rem, 4vw, 2.3rem);
-		color: #fff;
-	}
-
-	.contact-band h2 {
-		max-width: 560px;
-		color: #fff;
-		font-size: clamp(1.35rem, 2.4vw, 2rem);
-		line-height: 1.25;
-		letter-spacing: -0.035em;
-	}
-
-	.contact-band nav {
-		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-	}
-
-	.contact-band a {
-		display: inline-flex;
-		min-height: 70px;
-		align-items: center;
-		justify-content: center;
-		gap: 0.85rem;
-		border-left: 1px solid rgba(255, 255, 255, 0.18);
-		color: #fff;
+	.all-articles {
+		display: inline-block;
+		margin-top: 1rem;
+		color: var(--color-accent);
+		font-size: 0.95rem;
 		text-decoration: none;
 	}
 
-	.contact-icon {
-		display: inline-grid;
-		width: 26px;
-		height: 26px;
-		place-items: center;
-		border: 1.5px solid currentColor;
-		border-radius: 3px;
-		font-size: 0.88rem;
-		font-weight: 800;
-		line-height: 1;
-	}
-
-	.contact-icon svg {
-		width: 20px;
-		height: 20px;
-		fill: none;
-		stroke: currentColor;
-		stroke-linecap: round;
-		stroke-linejoin: round;
-		stroke-width: 1.7;
-	}
-
-	@media (max-width: 980px) {
-		.hero-grid,
-		.writing-section,
-		.contact-band {
-			grid-template-columns: 1fr;
+	@media (max-width: 680px) {
+		.profile-hero {
+			padding-top: 3rem;
 		}
 
-		.hero-grid {
-			min-height: auto;
-			padding-bottom: 3rem;
-		}
-
-		.system-figure {
-			min-height: 420px;
-		}
-
-		.route-grid {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-
-		.contact-band nav {
-			grid-template-columns: 1fr;
-		}
-
-		.contact-band a {
-			justify-content: flex-start;
-			border-top: 1px solid rgba(255, 255, 255, 0.18);
-			border-left: 0;
-		}
-	}
-
-	@media (max-width: 640px) {
 		h1 {
-			font-size: 3rem;
-		}
-
-		.hero-actions a,
-		.article-list li {
-			grid-template-columns: 1fr;
+			font-size: 3.4rem;
 		}
 
 		.hero-actions a {
 			width: 100%;
 		}
 
-		.system-figure {
-			min-height: 340px;
-		}
-
-		.diagram-label {
-			font-size: 0.58rem;
-		}
-
-		.route-grid {
-			grid-template-columns: 1fr;
-		}
-
-		.route-grid article {
-			min-height: 0;
+		.article-list li {
+			grid-template-columns: 6px minmax(0, 1fr);
+			align-items: start;
 		}
 
 		.article-list time {
-			grid-column: 1;
-			padding-left: 1.1rem;
-		}
-
-		.article-list a {
-			grid-column: 1;
-			padding-left: 1.1rem;
-		}
-
-		.article-list li::before {
-			grid-column: 1;
+			grid-column: 2;
 		}
 	}
 </style>
