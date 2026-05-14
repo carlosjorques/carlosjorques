@@ -1,0 +1,31 @@
+---
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<article class="expertise-card">
+	<h3>{title}</h3>
+	<p>{description}</p>
+</article>
+
+<style>
+	.expertise-card {
+		min-height: 220px;
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		background: rgba(255, 255, 255, 0.58);
+		padding: 22px;
+	}
+
+	.expertise-card h3 {
+		margin-bottom: 18px;
+	}
+
+	.expertise-card p {
+		line-height: 1.65;
+	}
+</style>

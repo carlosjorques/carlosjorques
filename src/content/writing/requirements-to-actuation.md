@@ -1,0 +1,24 @@
+---
+title: From Requirements to Actuation: How Control Systems Become Production Software
+description: A draft article describing the path from requirements and system behavior to embedded control logic that drives physical action.
+publishDate: 2026-05-14
+category: Safety-Critical Automotive Development
+tags:
+  - Requirements
+  - Actuation
+  - Production software
+featured: true
+draft: true
+---
+
+## Draft direction
+
+This article will describe how control systems move from requirements and behavioral expectations into production software structures that can be integrated, verified, and maintained.
+
+## Working outline
+
+- Requirements as behavior contracts
+- Translating control intent into software logic
+- Diagnostics and safety-related expectations
+- Integration and verification realities
+- Keeping traceability useful instead of bureaucratic

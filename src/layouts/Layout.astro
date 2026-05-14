@@ -1,23 +1,44 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Carlos Jorques | Embedded Control Systems Architect',
+	description = 'Carlos Jorques leads the design of production-ready embedded control systems for vehicles and smart machines.',
+} = Astro.props;
+
+const siteTitle = title.includes('Carlos Jorques') ? title : `${title} | Carlos Jorques`;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<link rel="canonical" href={canonical} />
+		<title>{siteTitle}</title>
+		<meta name="description" content={description} />
+		<meta property="og:title" content={siteTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonical} />
 	</head>
 	<body>
-		<slot />
+		<a class="skip-link" href="#main-content">Skip to content</a>
+		<Header />
+		<main id="main-content">
+			<slot />
+		</main>
+		<Footer />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

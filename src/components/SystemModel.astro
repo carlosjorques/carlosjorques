@@ -1,0 +1,120 @@
+---
+const steps = [
+	{
+		name: 'Sensors',
+		description: 'define what the system needs to perceive',
+	},
+	{
+		name: 'Signals',
+		description: 'process measurements into useful information',
+	},
+	{
+		name: 'Software',
+		description: 'architect real-time embedded logic',
+	},
+	{
+		name: 'Control',
+		description: 'design algorithms for behavior, safety, and diagnostics',
+	},
+	{
+		name: 'Actuation',
+		description: 'connect decisions to physical action',
+	},
+	{
+		name: 'Behavior',
+		description: 'validate reliable, purposeful system response',
+	},
+];
+---
+
+<section class="system-model">
+	<div class="chain" aria-label="Sensors to behavior control chain">
+		{steps.map((step, index) => (
+			<>
+				<div class="chain-node">
+					<strong>{step.name}</strong>
+				</div>
+				{index < steps.length - 1 && <span class="arrow" aria-hidden="true">→</span>}
+			</>
+		))}
+	</div>
+	<p class="lead">I work across this chain to help physical systems sense, decide, and act reliably.</p>
+	<div class="mapping">
+		{steps.map((step) => (
+			<div>
+				<h3>{step.name}</h3>
+				<p>{step.description}</p>
+			</div>
+		))}
+	</div>
+</section>
+
+<style>
+	.system-model {
+		display: grid;
+		gap: 28px;
+	}
+
+	.chain {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.chain-node {
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		background: var(--color-surface);
+		padding: 12px 14px;
+	}
+
+	.chain-node strong {
+		font-family: var(--font-mono);
+		font-size: 0.83rem;
+		letter-spacing: 0.03em;
+		text-transform: uppercase;
+	}
+
+	.arrow {
+		color: var(--color-accent-dark);
+		font-family: var(--font-mono);
+	}
+
+	.mapping {
+		display: grid;
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+		gap: 1px;
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		background: var(--color-border);
+	}
+
+	.mapping div {
+		background: rgba(255, 255, 255, 0.56);
+		padding: 18px;
+	}
+
+	.mapping h3 {
+		margin-bottom: 10px;
+		font-size: 1rem;
+	}
+
+	.mapping p {
+		font-size: 0.92rem;
+		line-height: 1.55;
+	}
+
+	@media (max-width: 980px) {
+		.mapping {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 620px) {
+		.mapping {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
