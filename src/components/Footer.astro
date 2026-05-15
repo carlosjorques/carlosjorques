@@ -6,26 +6,21 @@ const baseUrl = import.meta.env.BASE_URL;
 <footer class="site-footer">
 	<div class="footer-inner">
 		<div>
-			<p class="footer-line">Turning physical complexity into dependable products.</p>
+			<p class="footer-line">Making complex systems behave reliably.</p>
 			<p>© {year} Carlos Jorques. All rights reserved.</p>
+			<p>Barcelona, Spain</p>
 		</div>
-		<div class="footer-links">
-			<nav aria-label="Footer links">
-				<a href={`${baseUrl}research/`}>Research</a>
-				<a href={`${baseUrl}contact/`}>Contact</a>
-			</nav>
-			<ul aria-label="Launch placeholders">
-				<li>Email TODO</li>
-				<li>LinkedIn TODO</li>
-				<li>CV TODO</li>
-			</ul>
-		</div>
+		<nav class="footer-links" aria-label="Footer contact links">
+			<a href={`${baseUrl}contact/`} aria-label="Email details on contact page">Email</a>
+			<a href={`${baseUrl}contact/`} aria-label="LinkedIn details on contact page">LinkedIn</a>
+			<a href={`${baseUrl}contact/`} aria-label="CV details on contact page">CV</a>
+		</nav>
 	</div>
 </footer>
 
 <style>
 	.site-footer {
-		padding: 1rem 2.75rem 2rem;
+		padding: 0 2.75rem 2rem;
 		background: transparent;
 	}
 
@@ -37,7 +32,7 @@ const baseUrl = import.meta.env.BASE_URL;
 		width: min(100%, var(--content-width));
 		border-top: 1px solid var(--color-border);
 		margin-inline: auto;
-		padding-top: 1.55rem;
+		padding-top: 1.4rem;
 	}
 
 	p {
@@ -60,26 +55,7 @@ const baseUrl = import.meta.env.BASE_URL;
 		justify-content: flex-end;
 	}
 
-	nav,
-	ul {
-		display: flex;
-		align-items: center;
-		flex-wrap: wrap;
-		gap: 0.85rem 1.2rem;
-	}
-
-	ul {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-
-	li {
-		margin: 0;
-	}
-
-	a,
-	li {
+	a {
 		color: var(--color-text);
 		font-size: 0.82rem;
 		font-weight: 700;
@@ -87,13 +63,9 @@ const baseUrl = import.meta.env.BASE_URL;
 		text-decoration: none;
 	}
 
-	li {
-		color: var(--color-subtle);
-	}
-
 	@media (max-width: 680px) {
 		.site-footer {
-			padding: 2rem 1rem;
+			padding: 0 1rem 2rem;
 		}
 
 		.footer-inner {

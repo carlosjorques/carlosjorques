@@ -1,9 +1,8 @@
 ---
 const navItems = [
-	{ href: '/', label: 'Home' },
-	{ href: '/cases/', label: 'Cases' },
 	{ href: '/writing/', label: 'Writing' },
 	{ href: '/about/', label: 'About' },
+	{ href: '/research/', label: 'Work' },
 	{ href: '/contact/', label: 'Contact' },
 ];
 
@@ -16,12 +15,6 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
 <header class="site-header">
 	<div class="header-inner">
 		<a class="brand" href={withBase('/')} aria-label="Carlos Jorques home">
-			<span class="brand-mark" aria-hidden="true">
-				<svg viewBox="0 0 32 32" role="img" focusable="false">
-					<path d="M16 2.75 27.25 9.2v13.6L16 29.25 4.75 22.8V9.2L16 2.75Z" />
-					<path d="M16 2.75V16m11.25-6.8L16 16 4.75 9.2m11.25 20.05V16" />
-				</svg>
-			</span>
 			<strong>Carlos Jorques</strong>
 		</a>
 		<nav class="main-nav" aria-label="Main navigation">
@@ -41,6 +34,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
 		position: relative;
 		z-index: 4;
 		background: transparent;
+		padding-inline: 2.75rem;
 	}
 
 	.header-inner {
@@ -48,41 +42,23 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
 		align-items: center;
 		justify-content: space-between;
 		gap: 1.5rem;
-		width: min(100% - 5.5rem, var(--content-width));
+		width: min(100%, var(--content-width));
 		margin-inline: auto;
-		padding: 1.85rem 0 0.75rem;
+		padding: 1.55rem 0 1rem;
 	}
 
 	.brand {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.85rem;
 		color: var(--color-text);
+		font-family: var(--font-mono);
 		text-decoration: none;
-		text-transform: uppercase;
-		letter-spacing: 0.02em;
-	}
-
-	.brand-mark {
-		display: grid;
-		width: 34px;
-		height: 34px;
-		place-items: center;
-		color: var(--color-text);
-	}
-
-	.brand-mark svg {
-		width: 34px;
-		height: 34px;
-		fill: none;
-		stroke: currentColor;
-		stroke-linejoin: round;
-		stroke-width: 1.35;
 	}
 
 	.brand strong {
-		font-size: 0.95rem;
+		font-size: 0.88rem;
 		font-weight: 700;
+		letter-spacing: 0;
 	}
 
 	.main-nav {
@@ -93,21 +69,27 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
 
 	.main-nav a {
 		color: var(--color-text);
-		font-size: 0.98rem;
+		border-bottom: 1px solid transparent;
+		padding-bottom: 0.18rem;
+		font-size: 0.92rem;
 		font-weight: 600;
 		text-decoration: none;
 	}
 
 	.main-nav a:hover,
 	.main-nav a[aria-current='page'] {
+		border-color: var(--color-accent);
 		color: var(--color-accent);
 	}
 
 	@media (max-width: 780px) {
+		.site-header {
+			padding-inline: 1rem;
+		}
+
 		.header-inner {
-			align-items: flex-start;
-			flex-direction: column;
-			width: min(100% - 2rem, var(--content-width));
+			align-items: baseline;
+			flex-wrap: wrap;
 			padding-top: 1.25rem;
 		}
 
