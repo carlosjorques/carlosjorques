@@ -2,241 +2,163 @@
 import { getCollection } from 'astro:content';
 
 import Layout from '../layouts/Layout.astro';
+import CaseCard from '../components/CaseCard.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import ExpertiseCard from '../components/ExpertiseCard.astro';
+import Hero from '../components/Hero.astro';
+import PostCard from '../components/PostCard.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import SystemModel from '../components/SystemModel.astro';
 
-const baseUrl = import.meta.env.BASE_URL;
 const toSlug = (id: string) => id.replace(/\.md$/, '');
-const articleOrder = [
-	'What Is Control Intelligence for Physical Systems?',
-	'Embedded Software as the Nervous System of Smart Machines',
-	'From Requirements to Actuation: How Control Systems Become Production Software',
-	'Why Control Architecture Starts Before Software Implementation',
-	'AUTOSAR Is a Constraint, Not the Architecture',
-];
-const posts = (await getCollection('writing'))
+const featuredCases = (await getCollection('cases'))
 	.filter((entry) => entry.data.featured)
-	.sort((a, b) => articleOrder.indexOf(a.data.title) - articleOrder.indexOf(b.data.title));
-const displayDates = ['May 12, 2025', 'Apr 28, 2025', 'Apr 14, 2025', 'Mar 31, 2025', 'Mar 17, 2025'];
+	.sort((a, b) => a.data.order - b.data.order)
+	.slice(0, 3);
+const featuredPosts = (await getCollection('writing'))
+	.filter((entry) => entry.data.featured)
+	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+	.slice(0, 3);
+const featuredResearch = (await getCollection('research'))
+	.filter((entry) => entry.data.featured)
+	.slice(0, 2);
+
+const expertise = [
+	{
+		title: 'Control system architecture',
+		description:
+			'Define behavior, interfaces, ownership boundaries, diagnostics, and production constraints across control-heavy embedded systems.',
+	},
+	{
+		title: 'Embedded software and diagnostics',
+		description:
+			'Connect sensing, signal processing, real-time software, diagnostic logic, actuation, validation, and maintainable delivery.',
+	},
+	{
+		title: 'Technical leadership',
+		description:
+			'Align controls, software, systems, calibration, safety, suppliers, and delivery stakeholders around reliable physical behavior.',
+	},
+];
 ---
 
 <Layout
-	title="Carlos Jorques | Control Intelligence for Physical Systems"
-	description="Carlos Jorques is an embedded control systems architect focused on control intelligence for physical systems."
+	title="Carlos Jorques | Embedded Control Systems Architect"
+	description="Carlos Jorques leads the design of production-ready embedded control systems for vehicles and smart machines."
 >
-	<section class="profile-hero" aria-labelledby="home-heading">
-		<p class="role-label">Embedded Control Systems Architect</p>
-		<h1 id="home-heading">Carlos Jorques</h1>
-		<div class="title-rule" aria-hidden="true"></div>
-		<h2>Architecting the intelligence of physical systems</h2>
-		<p class="intro-copy">
-			Embedded control systems architect with 10+ years in automotive software development,
-			combining control algorithms, diagnostics, and production embedded software for reliable
-			machine behavior.
-		</p>
-		<p class="metadata">
-			PhD Mechanical Engineering · MSc Electrical Engineering · Technical Leader · Automotive
-			OEM/Tier 1
-		</p>
-		<nav class="hero-actions" aria-label="Primary homepage links">
-			<a class="primary-action" href={`${baseUrl}writing/`}>Read writing <span aria-hidden="true">-></span></a>
-			<a href={`${baseUrl}about/`}>About me</a>
-			<a href={`${baseUrl}contact/`}>Contact</a>
-		</nav>
+	<Hero
+		name="Carlos Jorques"
+		title="Embedded Control Systems Architect"
+		phrase="Control Intelligence for Physical Systems"
+		body="I lead the design of production-ready embedded control systems for vehicles and smart machines, connecting sensing, signal processing, embedded software, control algorithms, diagnostics, actuation, safety, and delivery."
+		credibility="PhD-trained electrical engineer with automotive OEM and Tier 1 experience across embedded control, diagnostics, safety-related development, and cross-functional delivery."
+	/>
+
+	<section class="section" aria-labelledby="expertise-heading">
+		<div class="container">
+			<SectionHeading
+				eyebrow="Expertise"
+				headingId="expertise-heading"
+				title="Embedded control from physical behavior to production software"
+				description="A compact view of the engineering layers I work across: architecture, implementation, diagnostics, safety-related development, and cross-functional delivery."
+			/>
+			<div class="grid three">
+				{expertise.map((item) => <ExpertiseCard title={item.title} description={item.description} />)}
+			</div>
+		</div>
 	</section>
 
-	<section class="latest-writing" aria-labelledby="writing-heading">
-		<p class="eyebrow">Latest writing</p>
-		<ol class="article-list" id="writing-heading" aria-label="Latest writing">
-			{
-				posts.map((entry, index) => (
-					<li>
-						<a href={`${baseUrl}writing/${toSlug(entry.id)}/`}>{entry.data.title}</a>
-						<time datetime={entry.data.publishDate.toISOString()}>{displayDates[index]}</time>
-					</li>
-				))
-			}
-		</ol>
-		<a class="all-articles" href={`${baseUrl}writing/`}>View all articles <span aria-hidden="true">-></span></a>
+	<section class="section" aria-labelledby="system-model-heading">
+		<div class="container">
+			<SectionHeading
+				eyebrow="System model"
+				headingId="system-model-heading"
+				title="The control chain behind reliable machine behavior"
+				description="The site uses this chain as the primary technical visual: from measured physical reality to software decisions and validated behavior."
+			/>
+			<SystemModel />
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="cases-heading">
+		<div class="container">
+			<SectionHeading
+				eyebrow="Selected cases"
+				headingId="cases-heading"
+				title="Public-safe experience cases"
+				description="Generalized examples of embedded control architecture, diagnostics, and technical delivery without confidential product, customer, architecture, calibration, or implementation details."
+			/>
+			<div class="grid three">
+				{featuredCases.map((entry) => <CaseCard slug={toSlug(entry.id)} data={entry.data} />)}
+			</div>
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="writing-heading">
+		<div class="container">
+			<SectionHeading
+				eyebrow="Featured writing"
+				headingId="writing-heading"
+				title="Notes on control systems, embedded software, and physical behavior"
+				description="Planned and draft articles that define the editorial direction for the site. Drafts are labeled as planned articles until full publication."
+			/>
+			<div class="grid three">
+				{featuredPosts.map((entry) => <PostCard slug={toSlug(entry.id)} data={entry.data} />)}
+			</div>
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="research-heading">
+		<div class="container research-section">
+			<SectionHeading
+				eyebrow="Research foundation"
+				headingId="research-heading"
+				title="Research as supporting technical credibility"
+				description="Research supports the industrial profile without making the website academic-first."
+			/>
+			<div class="research-list">
+				{
+					featuredResearch.map((entry) => (
+						<article class="research-item">
+							<p class="eyebrow">{entry.data.type}</p>
+							<h3>{entry.data.title}</h3>
+							<p>{entry.data.summary}</p>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<ContactCTA
+				title="Discuss embedded control architecture, diagnostics, or technical leadership for physical systems."
+				body="Contact and CV links are intentionally launch placeholders in this first draft until verified public details are ready."
+			/>
+		</div>
 	</section>
 </Layout>
 
 <style>
-	.profile-hero {
-		position: relative;
+	.research-list {
 		display: grid;
-		justify-items: center;
-		max-width: 780px;
-		margin: 0 auto;
-		padding: clamp(3rem, 8vw, 6.25rem) 0 clamp(2.8rem, 6vw, 4.6rem);
-		text-align: center;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
 	}
 
-	.profile-hero::before {
-		position: absolute;
-		inset: 0 -20vw auto;
-		z-index: -1;
-		height: 420px;
-		background-image: radial-gradient(rgba(10, 23, 32, 0.08) 1px, transparent 1px);
-		background-size: 22px 22px;
-		mask-image: radial-gradient(ellipse at center, black 0 52%, transparent 78%);
-		content: '';
+	.research-item {
+		border-top: 1px solid var(--color-border);
+		padding-top: 1rem;
 	}
 
-	.role-label {
-		margin-bottom: 1.15rem;
-		color: var(--color-accent);
-		font-family: var(--font-mono);
-		font-size: 0.82rem;
-		font-weight: 800;
-		letter-spacing: 0.18em;
-		line-height: 1.2;
-		text-transform: uppercase;
-		opacity: 1;
+	.research-item h3 {
+		margin: 0.35rem 0 0.45rem;
 	}
 
-	h1 {
-		max-width: none;
-		font-size: clamp(4rem, 9vw, 7.5rem);
-		line-height: 0.95;
-		letter-spacing: -0.07em;
-	}
-
-	.title-rule {
-		width: 48px;
-		height: 1px;
-		margin: 2.1rem 0 1.65rem;
-		background: var(--color-accent);
-	}
-
-	.profile-hero h2 {
-		font-size: clamp(1.65rem, 3vw, 2.35rem);
-		line-height: 1.15;
-		letter-spacing: -0.035em;
-	}
-
-	.intro-copy {
-		max-width: 660px;
-		margin-top: 0.85rem;
-		color: var(--color-muted);
-		font-size: clamp(1.05rem, 1.5vw, 1.22rem);
-		line-height: 1.65;
-		opacity: 1;
-	}
-
-	.metadata {
-		max-width: 720px;
-		margin-top: 0.25rem;
-		color: var(--color-text);
-		font-size: 0.95rem;
-		font-weight: 650;
-		line-height: 1.55;
-		opacity: 0.78;
-	}
-
-	.hero-actions {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: 1.25rem;
-		margin-top: 1.8rem;
-	}
-
-	.hero-actions a {
-		display: inline-flex;
-		min-width: 126px;
-		min-height: 50px;
-		align-items: center;
-		justify-content: center;
-		border: 1px solid var(--color-text);
-		border-radius: 5px;
-		padding: 0.7rem 1.25rem;
-		background: transparent;
-		color: var(--color-text);
-		text-decoration: none;
-	}
-
-	.hero-actions .primary-action {
-		background: var(--color-text);
-		color: #fff;
-	}
-
-	.latest-writing {
-		width: min(100%, 720px);
-		margin: 0 auto;
-		padding: 0 0 clamp(3rem, 8vw, 5rem);
-	}
-
-	.eyebrow {
-		margin-bottom: 0.75rem;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-	}
-
-	.article-list {
-		display: grid;
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-
-	.article-list li {
-		display: grid;
-		grid-template-columns: 6px minmax(0, 1fr) auto;
-		gap: 1rem;
-		align-items: center;
-		margin: 0;
-		border-bottom: 1px solid var(--color-border);
-		padding: 0.72rem 0;
-	}
-
-	.article-list li::before {
-		width: 5px;
-		height: 5px;
-		border-radius: 50%;
-		background: var(--color-accent);
-		content: '';
-	}
-
-	.article-list a {
-		color: var(--color-text);
-		font-size: 0.98rem;
-		line-height: 1.35;
-		text-decoration: none;
-	}
-
-	.article-list time {
-		color: var(--color-muted);
-		font-size: 0.9rem;
-		white-space: nowrap;
-	}
-
-	.all-articles {
-		display: inline-block;
-		margin-top: 1rem;
-		color: var(--color-accent);
-		font-size: 0.95rem;
-		text-decoration: none;
-	}
-
-	@media (max-width: 680px) {
-		.profile-hero {
-			padding-top: 3rem;
-		}
-
-		h1 {
-			font-size: 3.4rem;
-		}
-
-		.hero-actions a {
-			width: 100%;
-		}
-
-		.article-list li {
-			grid-template-columns: 6px minmax(0, 1fr);
-			align-items: start;
-		}
-
-		.article-list time {
-			grid-column: 2;
+	@media (min-width: 760px) {
+		.research-list {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
 </style>

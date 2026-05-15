@@ -1,26 +1,22 @@
 ---
 interface Props {
+	name?: string;
 	title: string;
 	phrase: string;
 	body: string;
 	credibility: string;
 }
 
-const { title, phrase, body, credibility } = Astro.props;
+const { name = 'Carlos Jorques', title, phrase, body, credibility } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
-const titleLines =
-	title === 'Embedded Control Systems Architect'
-		? ['Embedded Control Systems', 'Architect']
-		: [title];
 ---
 
 <section class="hero section">
 	<div class="container hero-grid">
 		<div class="hero-copy">
 			<p class="eyebrow">{phrase}</p>
-			<h1>
-				{titleLines.map((line) => <span>{line}</span>)}
-			</h1>
+			<h1>{name}</h1>
+			<p class="hero-title">{title}</p>
 			<p class="lead">{body}</p>
 			<p class="credibility">{credibility}</p>
 			<div class="button-row" aria-label="Primary actions">
@@ -76,8 +72,20 @@ const titleLines =
 		gap: 1rem;
 	}
 
-	h1 span {
-		display: block;
+	h1 {
+		max-width: 780px;
+		font-size: clamp(2.85rem, 7vw, 5.6rem);
+		letter-spacing: 0;
+		line-height: 1;
+	}
+
+	.hero-title {
+		max-width: 680px;
+		color: var(--color-text);
+		font-size: clamp(1.35rem, 2.4vw, 2.15rem);
+		font-weight: 800;
+		line-height: 1.2;
+		opacity: 1;
 	}
 
 	.credibility {
@@ -165,8 +173,8 @@ const titleLines =
 
 	@media (min-width: 900px) {
 		.hero-grid {
-			grid-template-columns: minmax(0, 1fr) 280px;
-			gap: 2rem;
+			grid-template-columns: minmax(0, 1fr) 300px;
+			gap: 2.25rem;
 		}
 	}
 </style>

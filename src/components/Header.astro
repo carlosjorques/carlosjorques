@@ -1,9 +1,9 @@
 ---
 const navItems = [
+	{ href: '/', label: 'Home' },
+	{ href: '/cases/', label: 'Cases' },
 	{ href: '/writing/', label: 'Writing' },
 	{ href: '/about/', label: 'About' },
-	{ href: '/cases/', label: 'Cases' },
-	{ href: '/research/', label: 'Research' },
 	{ href: '/contact/', label: 'Contact' },
 ];
 
@@ -32,7 +32,6 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
 					</a>
 				))
 			}
-			<span class="theme-icon" aria-hidden="true">◐</span>
 		</nav>
 	</div>
 </header>
@@ -102,14 +101,6 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
 	.main-nav a:hover,
 	.main-nav a[aria-current='page'] {
 		color: var(--color-accent);
-	}
-
-	.theme-icon {
-		display: inline-grid;
-		width: 28px;
-		height: 28px;
-		place-items: center;
-		color: var(--color-text);
 	}
 
 	@media (max-width: 780px) {
